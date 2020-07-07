@@ -1,0 +1,263 @@
+.wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.createUserWrapper {
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.labelwrapper {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.createAnAccountLabel {
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 4.5rem;
+  color: #212121;
+}
+
+.joinNowForm {
+  width: 60%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  font-family: sans-serif;
+  background-color: #f7f7f7;
+  float: right;
+  /* box-shadow: -10px 0px 1px -9px #b1b1b1; */
+  box-shadow: 0 4px 5px -2px #333;
+}
+
+.joinNowForm form {
+  width: 40%;
+  padding: 10rem 0;
+}
+
+.joinNowForm form fieldset {
+  padding-bottom: 6rem;
+  outline: none;
+  border: none;
+}
+
+.personalInfoSpan,
+.accountSecuritySpan,
+.rewardAndStarTitle,
+.termsOfUseTitle {
+  display: block;
+  text-transform: uppercase;
+  color: #6c6c6c;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.boxName,
+.boxEmail {
+  width: 100%;
+  height: 6rem;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+}
+
+.boxName input,
+.boxEmail input {
+  width: 100%;
+  height: 100%;
+  padding-top: 2.5rem;
+  border: none;
+  outline: none;
+  background-color: #f7f7f7;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  font-weight: 700;
+}
+
+.boxName label,
+.boxEmail label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #6c6c6c;
+}
+
+.boxName label::after,
+.boxEmail label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #00653e;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.contentName,
+.contentEmail {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  color: #b1b1b1;
+}
+
+.boxName input:focus + .labelName .contentName,
+.boxName input:valid + .labelName .contentName {
+  transform: translateY(-130%);
+  color: #00653e;
+}
+
+.boxName input:focus + .labelName::after,
+.boxName input:valid + .labelName::after {
+  transform: translateX(0%);
+}
+
+.boxEmail input:focus + .labelEmail .contentEmail,
+.boxEmail input:valid + .labelEmail .contentEmail {
+  transform: translateY(-130%);
+  color: #00653e;
+}
+
+.boxEmail input:focus + .labelEmail::after,
+.boxEmail input:valid + .labelEmail::after {
+  transform: translateX(0%);
+}
+
+/* Rewards Title */
+.rewards_and_terms_WrapperDiv{
+  padding-bottom: 6rem;
+}
+.rewardAndStarTitle,
+.termsOfUseTitle {
+  margin-bottom: 2.8rem;
+}
+
+.subscriptionLabel,
+.unsubscribeLabel {
+  display: block;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  font-weight: 500;
+  letter-spacing: 0.05rem;
+}
+
+.subscriptionLabel{
+  margin-bottom: 2.4rem;
+}
+
+.handleCheckbox {
+  display: flex;
+  margin-bottom: 2.4rem;
+}
+
+.rewardsCheckbox{
+  display: flex;
+
+}
+
+.checkboxLabel {
+  color: #212121;
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  padding-left: 0.5rem;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2.5rem;
+  height: 1.5rem;
+  border: 1.5px solid #00a862;
+  background: #f7f7f7;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 0.2rem;
+}
+
+
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: "\2713\0020";
+  position: absolute;
+  top: 0.1rem;
+  left: 0.45rem;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  line-height: 0.8rem;
+  color: #00653e;
+  transition: all 0.2s;
+  font-family: "Lucida Sans Unicode", "Arial Unicode MS", Arial;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 1.95rem;
+  cursor: pointer;
+}
+
+/* Submit Button */
+.submitButtonWrapper{
+  margin-top: 2rem;
+}
+
+.submitButton {
+  display: block;
+  background-color: #00a862;
+  color: #ffffff;
+  font-size: 1.8rem;
+  padding: 1.6rem 2.4rem;
+  border-radius: 50px;
+  border-style: none;
+  float: right;
+  cursor: pointer;
+  outline: none;
+  font-weight: 600;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+

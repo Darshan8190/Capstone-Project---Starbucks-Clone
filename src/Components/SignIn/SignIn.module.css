@@ -1,0 +1,302 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.signinUserWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* section label */
+.labelwrapper {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.createAnAccountLabel {
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 4.5rem;
+  color: #212121;
+}
+
+/* section login form */
+
+.signInFormWrapper {
+  width: 60%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  font-family: sans-serif;
+  background-color: #f7f7f7;
+  float: right;
+  /* box-shadow: -10px 0px 1px -9px #b1b1b1; */
+  box-shadow: 0 4px 5px -2px #333;
+}
+
+.signInFormWrapper form {
+  width: 40%;
+  margin: 8rem 0 0 0;
+}
+
+.boxUserName,
+.boxPassword {
+  width: 100%;
+  height: 6rem;
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.boxUserName input,
+.boxPassword input {
+  width: 100%;
+  height: 100%;
+  padding-top: 2.5rem;
+  border: none;
+  outline: none;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  font-weight: 700;
+  background-color: #f7f7f7;
+}
+
+.boxUserName label,
+.boxPassword label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #6c6c6c;
+}
+
+.boxUserName label::after,
+.boxPassword label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #00653e;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.contentName,
+.contentPassword {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  color: #b1b1b1;
+}
+
+.boxUserName input:focus + .labelUserName .contentName,
+.boxUserName input:valid + .labelUserName .contentName {
+  transform: translateY(-130%);
+  color: #00653e;
+}
+
+.boxUserName input:focus + .labelUserName::after,
+.boxUserName input:valid + .labelUserName::after {
+  transform: translateX(0%);
+}
+
+.boxPassword input:focus + .labelPassword .contentPassword,
+.boxPassword input:valid + .labelPassword .contentPassword {
+  transform: translateY(-130%);
+  color: #00653e;
+}
+
+.boxPassword input:focus + .labelPassword::after,
+.boxPassword input:valid + .labelPassword::after {
+  transform: translateX(0%);
+}
+
+/* checkbox */
+.handleCheckbox {
+  display: flex;
+  padding: 2rem 0;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1.5px solid #00a862;
+  background: #f7f7f7;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: "\2713\0020";
+  position: absolute;
+  top: 0.8rem;
+  left: 0.45rem;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  line-height: 0.8rem;
+  color: #00653e;
+  transition: all 0.2s;
+  font-family: "Lucida Sans Unicode", "Arial Unicode MS", Arial;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.checkboxSubscribeLabel{
+  padding: 0 0.5rem;
+font-size: 1.4rem;
+line-height: 2.1rem;
+}
+
+.checkboxDetailsLink{
+  float: left;
+  display: block;
+  color: #00653e;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  text-decoration: underline;
+}
+
+/* Forgot username & password link */
+.userHelpingLinks {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+.forgotUsernamePassword {
+  float: left;
+  display: block;
+  color: #00653e;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-bottom: 0.5rem;
+}
+
+/* Signin Button */
+.signinButton {
+  margin: 6rem 0;
+  background-color: #00a862;
+  color: #ffffff;
+  font-size: 1.8rem;
+  padding: 1.6rem 2.4rem;
+  border-radius: 50px;
+  border-style: none;
+  float: right;
+  cursor: pointer;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+  outline: none;
+  font-weight: 600;
+}
+
+/* Join rewards label */
+.joinRewardsLabel {
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  padding: 1.4rem 0;
+  background-color: #2d2926;
+  color: #ffffff;
+  text-align: center;
+  font-feature-settings: "calt";
+  margin: 0;
+}
+
+/* Join now section */
+.joinNowSectionWrapper {
+  background-color: #edebe9;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.joinNowDiv {
+  width: 40%;
+  padding: 8rem 0;
+}
+
+/* Common Button Link Props */
+.commonButtonLinkProps{
+  width: fit-content;
+  display: block;
+  border-radius: 50px;
+  border-style: none;
+  padding: 0.8rem 1.6rem;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  outline: none;
+}
+
+.joinNowLink {
+  color: #212121;
+  background-color: #edebe9;
+  border: 1px solid #212121;
+}
+.joinNowLink:hover {
+  background-color: #dfdddb;
+}
+
+.joinNowh3Tag {
+  display: block;
+  color: #212121;
+  letter-spacing: 0.05rem;
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 3.1rem;
+  margin-bottom: 2rem;
+}
+
+.joinNowParagraph {
+  display: block;
+  color: #212121;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  font-weight: 400;
+}

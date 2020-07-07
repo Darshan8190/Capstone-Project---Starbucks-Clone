@@ -1,0 +1,25 @@
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  display: inline-block;
+  padding-right: 2.4rem;
+}
+
+.listItemLink {
+  text-decoration: none;
+  color: #212121;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.listItemLink:hover,
+.listItemLink:active{
+    color: #008248;
+}

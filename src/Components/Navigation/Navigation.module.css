@@ -1,0 +1,81 @@
+.Navigation {
+  padding: 0 4rem;
+  box-shadow: 0 4px 5px -5px #333;
+  position: relative;
+  z-index: 100;
+}
+
+.handle {
+  width: 100%;
+  min-height: 10rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.signInSignUpPageWrapper {
+  margin-left: auto;
+}
+
+.signInSignUpPage {
+  display: flex;
+}
+
+.findAStoreLink {
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  display: flex;
+  font-weight: 600;
+  padding: 0.7rem 1.6rem;
+  margin-right: 4rem;
+  text-decoration: none;
+  color: #212121;
+}
+
+.locationMarker {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin: auto 0.8rem auto 0;
+}
+
+.signInLink {
+  width: fit-content;
+  display: inline-block;
+  color: #212121;
+  background-color: #ffffff;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  border-radius: 50px;
+  border-style: none;
+  border: 1px solid #212121;
+  padding: 0.7rem 1.6rem;
+margin-right: 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  outline: none;
+}
+
+.signInSignUpPage .signInLink:hover {
+  background-color: #f0f0f0;
+}
+
+.joinNowLink {
+  width: fit-content;
+  color: #ffffff;
+  background-color: #212121;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  border-radius: 50px;
+  border-style: none;
+  border: 1px solid #212121;
+  padding: 0.7rem 1.6rem;
+  /* margin: auto 0; */
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  outline: none;
+}
+
+.signInSignUpPage .joinNowLink:hover {
+  background-color: #4c4c4c;
+}

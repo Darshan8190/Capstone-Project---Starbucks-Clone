@@ -1,0 +1,85 @@
+/* Footer Section */
+.footerWrapper {
+  width: 100%;
+  background-color: #f7f7f7;
+}
+
+.hr{
+  height: 0.1rem;
+  width: 100%;
+  background-color: #f5f0f0;
+}
+.footerConatiner {
+  padding: 4rem 4rem 9rem 4rem;
+}
+
+.footerLinks {
+  display: flex;
+}
+
+/* divWrapper for fintAStore-Button, currantLanguage, and policies */
+.divWrapper {
+  padding: 0 6.4rem 0 0;
+}
+
+/* Currant Language div & Policies div */
+.languageDiv,
+.policyDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.commonButtonLinkProps {
+  width: fit-content;
+  display: block;
+  border-radius: 50px;
+  border-style: none;
+  padding: 0.8rem 1.6rem;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  outline: none;
+}
+
+/* find a store button link */
+.findAStoreLink {
+  color: #008248;
+  background-color: #f7f7f7;
+  border: 1px solid #008248;
+}
+.findAStoreLink:hover {
+  background-color: #e4eeea;
+}
+
+/* Common text features */
+.commonTextPropsFooter {
+  display: block;
+  color: #212121;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+.languageEnglish {
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.link {
+  text-decoration: none;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.link:hover,
+.link:active {
+  color: #008248;
+}
+
+/* copyright div */
+.copyrightDiv {
+  padding: 3.2rem 0 0 0;
+}
