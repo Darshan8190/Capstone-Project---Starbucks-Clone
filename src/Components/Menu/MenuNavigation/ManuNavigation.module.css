@@ -1,0 +1,31 @@
+.sideNavWrapper {
+  width: 30%;
+  height: 500px;
+  padding: 1.6rem 0 !important;
+  flex-basis: 150px;
+}
+
+.sectionHeading {
+  margin-top: 3rem !important;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+}
+
+.sideNavWrapper .sideNavUL {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sideNavWrapper ul li {
+  margin: 1.6rem 0 !important;
+}
+
+.sideNavWrapper ul li a {
+  text-decoration: none !important;
+  font-size: 1.5rem;
+  color: #6c6c6c;
+  cursor: pointer;
+  display: block;
+}

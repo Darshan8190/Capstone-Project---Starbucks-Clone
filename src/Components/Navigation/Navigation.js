@@ -29,8 +29,8 @@ const navigation = (props) => (
       </nav>
     </header>
 
-    <Route path="/account/create" exact component={JoinNow} />
     <Route path="/account/signin" exact component={SignIn} />
+    <Route path="/account/create" exact component={JoinNow} />
   </div>
 
 );
