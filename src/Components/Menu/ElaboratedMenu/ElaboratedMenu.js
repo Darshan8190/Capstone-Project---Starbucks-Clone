@@ -1,53 +1,31 @@
 import React, { Component } from 'react';
 import classes from './ElaboratedMenu.module.css'
 
+import ItemSection from './ItemSection/ItemSection'
+
 class ElaboratedMenu extends Component {
 
     state = {
-        sectionHeadings : ["Drinks", "Food", "At Home Coffee"]
+        sectionHeadings : ["Drinks", "Food", "At Home Coffee"],
+        Drinks : ["Hot Coffee", "Hot Teas", "Hot Drinks", "Frappuccino Blended Beverages", "Cold Coffees", "Iced Teas", "Cold Drinks"],
+        Food : ["Hot Breakfast", "Bakery", "Lunch", "Snacks & Sweets"],
+        "At Home Coffee" : ["Whole Bean", "Verismo Pods", "VIA Instant", "K-Cup Pods"]
     }
 
     render() {
-        
-        let sectionHeading = ""
+        let sectionHeading = null;
         sectionHeading = this.state.sectionHeadings.map( sectionHeading => {
-            
+           return <ItemSection key={sectionHeading} sectionItemHeading={sectionHeading} drinkItems={this.state.Drinks}/>
         })
+        
         return (
             <div className={classes.elaboratedMenuWrapper}>
                 <h1 className={classes.menuHeading}>Menu</h1>
-                <section className={classes.sectionDrinks}>
-                    <h2 className={classes.heading}>Drinks</h2>
-                    <hr className={classes.hrLine}></hr>
-                    <div className={classes.inventoryWrapper}>
-
-                        <div className={classes.itemBox}>
-                            <div className={classes.itemFlexContainer}>
-                                <div className={classes.imageBox}></div>
-                                <h3 className={classes.itemHeading}>Hot Coffees</h3>
-                                <a href="/menu/drinks/hot-coffees" className={classes.itemLinkOverlay}></a>
-                            </div>
-                        </div>
-
-                        <div className={classes.itemBox}>
-                            <div className={classes.itemFlexContainer}>
-                                <div className={classes.imageBox}></div>
-                                <h3 className={classes.itemHeading}>Hot Teas</h3>
-                                <a href="/menu/drinks/hot-teas" className={classes.itemLinkOverlay}></a>
-                            </div>
-                        </div>
-
-                        <div className={classes.itemBox}>
-                            <div className={classes.itemFlexContainer}>
-                                <div className={classes.imageBox}></div>
-                                <h3 className={classes.itemHeading}>Hot Drinks</h3>
-                                <a href="/menu/drinks/hot-drinks" className={classes.itemLinkOverlay}></a>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </section>
+                {sectionHeading}
+                {/* <ItemSection sectionItemHeading="Drinks" drinkItems={this.state.Drinks}/>
+                <br/>
+                <ItemSection sectionItemHeading="Drinks" drinkItems={this.state.Drinks}/> */}
+              
             </div>
         )
     }

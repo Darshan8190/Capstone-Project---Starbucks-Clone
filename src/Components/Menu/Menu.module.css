@@ -4,7 +4,7 @@
 }
 
 .Wrapper{
-    height: 500px;
+    height: auto;
     /* width: 100%; */
     padding-left: 13.1rem;
     display: flex;
