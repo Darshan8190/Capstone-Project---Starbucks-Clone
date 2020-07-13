@@ -12,8 +12,7 @@
   line-height: 1.5rem;
 }
 
-.sideNavWrapper .sideNavUL {
-  list-style: none;
+.sideNavWrapper {
   margin: 0;
   padding: 0;
 }

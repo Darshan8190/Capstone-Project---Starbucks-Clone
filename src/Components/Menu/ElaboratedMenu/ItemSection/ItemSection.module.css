@@ -1,5 +1,5 @@
 
-.sectionDrinks{
+.sectionWrapper{
     padding-bottom: 4rem!important;
     display: flex;
     width: 100%;
@@ -24,7 +24,7 @@
 .hrLine::before{
     content: "";
     display: block;
-    border-top: 1px solid #e2e2e2;
+    border-top: 1px solid #b1b1b1;
 }
 
 .inventoryWrapper{
