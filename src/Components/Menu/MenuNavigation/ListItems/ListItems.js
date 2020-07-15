@@ -7,7 +7,7 @@ class ListItem extends Component {
 
         items = this.props.items.map(item => {
             return (
-                <li><a href={`/menu/${this.props.sectionName.toLowerCase().replace(/\s+/g, '-')}/${item.toLowerCase().replace(/\s+/g, '-')}`}>{item}</a></li>
+                <li key={item}><a href={`/menu/${this.props.sectionName.toLowerCase().replace(/\s+/g, '-')}/${item.toLowerCase().replace(/\s+/g, '-')}`}>{item}</a></li>
             )
         })
 

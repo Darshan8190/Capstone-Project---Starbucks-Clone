@@ -6,31 +6,22 @@ import ListItems from './ListItems/ListItems'
 class MenuNavigation extends Component {
 
     state = {
-        navSecstionItems: []
+        sectionName: null,
+        sectionItems: []
     }
 
     render() {
         let navigationSections = null;
 
-        navigationSections = this.props.menu.sectionNames.map(sectionName => {
+        navigationSections = this.props.menu.map(sectionName => {
 
-            if (sectionName.toLowerCase() === "drinks") {
-                this.state.navSecstionItems = this.props.menu.Drinks
-            }
-            else if (sectionName.toLowerCase() === "food") {
-                this.state.navSecstionItems = this.props.menu.Food
-            }
-            else if (sectionName.toLowerCase() === "at home coffee") {
-                this.state.navSecstionItems = this.props.menu["At Home Coffee"]
-            }
-            else {
-                this.state.navSecstionItems = []
-            }
+            this.state.sectionName = Object.keys(sectionName)[0];
+            this.state.sectionItems = Object.values(sectionName)[0];
 
             return (
-                <section>
-                    <h4 className={classes.sectionHeading}>{sectionName}</h4>
-                    <ListItems items={this.state.navSecstionItems} sectionName={sectionName} />
+                <section key={this.state.sectionName}>
+                    <h4 className={classes.sectionHeading}>{this.state.sectionName}</h4>
+                    <ListItems items={this.state.sectionItems} sectionName={this.state.sectionName} />
                 </section>
             )
         })
