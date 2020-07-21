@@ -11,6 +11,7 @@ class ElaboratedMenu extends Component {
         // inventories: []
     }
 
+
     render() {
         let sectionsInventory = null;
         sectionsInventory = this.props.menu.map(sectionName => {

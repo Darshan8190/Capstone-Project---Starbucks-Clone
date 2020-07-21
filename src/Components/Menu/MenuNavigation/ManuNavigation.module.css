@@ -1,6 +1,6 @@
 .sideNavWrapper {
   width: 30%;
-  height: 500px;
+  height: auto;
   padding: 1.6rem 0 !important;
   flex-basis: 150px;
 }
