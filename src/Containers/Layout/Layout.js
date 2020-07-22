@@ -1,36 +1,37 @@
 import React, { Component } from "react";
-// import classes from './Layout.module.css'
 import Aux from "../../Auxiliary/Auxiliary";
 import Navigation from "../../Components/Navigation/Navigation";
-// import { Route } from 'react-router-dom'
-import Menu from '../../Components/Menu/Menu'
-// import MenuNavigation from '../../Components/Menu/MenuNavigation/MenuNavigation'
-import axios from 'axios'
-
+import Menu from "../../Components/Menu/Menu";
+import axios from "axios";
 
 class Layout extends Component {
 
   state = {
-    menu: null
-  }
+    menu: null,
+  };
 
   componentDidMount() {
-    axios.get("https://starbucks-clone-capstone.firebaseio.com/menu.json")
-      .then(response => {
+    axios
+      .get("https://starbucks-clone-capstone.firebaseio.com/menu.json")
+      .then((response) => {
         this.setState({ menu: response.data });
-       
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   }
 
   render() {
-
+    let menu = null;
+    if (this.state.menu) {
+      menu = <Menu menu={this.state.menu} />;
+    } else {
+      menu = "Loading";
+    }
     return (
       <Aux>
         <Navigation />
-        <Menu menu={this.state.menu}/>
+        {menu}
       </Aux>
-    )
+    );
   }
 }
 

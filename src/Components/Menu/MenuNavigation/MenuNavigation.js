@@ -14,14 +14,10 @@ class MenuNavigation extends Component {
         let navigationSections = null;
 
         navigationSections = this.props.menu.map(sectionName => {
-
-            this.state.sectionName = Object.keys(sectionName)[0];
-            this.state.sectionItems = Object.values(sectionName)[0];
-
             return (
-                <section key={this.state.sectionName}>
-                    <h4 className={classes.sectionHeading}>{this.state.sectionName}</h4>
-                    <ListItems items={this.state.sectionItems} sectionName={this.state.sectionName} />
+                <section key={Object.keys(sectionName)[0]}>
+                    <h4 className={classes.sectionHeading}>{Object.keys(sectionName)[0]}</h4>
+                    <ListItems items={Object.values(sectionName)[0]} sectionName={Object.keys(sectionName)[0]} />
                 </section>
             )
         })
