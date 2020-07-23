@@ -23,8 +23,9 @@
 
 .sideNavWrapper ul li a {
   text-decoration: none !important;
-  font-size: 1.5rem;
-  color: #6c6c6c;
+  font-size: 1.4rem;
+  color: #a59e9e;
   cursor: pointer;
   display: block;
+  font-weight: 600;
 }

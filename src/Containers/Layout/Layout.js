@@ -3,6 +3,7 @@ import Aux from "../../Auxiliary/Auxiliary";
 import Navigation from "../../Components/Navigation/Navigation";
 import Menu from "../../Components/Menu/Menu";
 import axios from "axios";
+import Spinner from '../../Components/UI/Spinner/Spinner'
 
 class Layout extends Component {
 
@@ -14,7 +15,9 @@ class Layout extends Component {
     axios
       .get("https://starbucks-clone-capstone.firebaseio.com/menu.json")
       .then((response) => {
-        this.setState({ menu: response.data });
+        this.setState({
+          menu: response.data,
+        });
       })
       .catch((error) => console.log(error));
   }
@@ -22,9 +25,9 @@ class Layout extends Component {
   render() {
     let menu = null;
     if (this.state.menu) {
-      menu = <Menu menu={this.state.menu} />;
+      menu = <Menu menu={this.state.menu} showMenuNavigation={this.state.showMenuNavigation} />;
     } else {
-      menu = "Loading";
+      menu = <Spinner />
     }
     return (
       <Aux>

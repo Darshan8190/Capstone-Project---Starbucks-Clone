@@ -5,14 +5,8 @@ import ListItems from './ListItems/ListItems'
 
 class MenuNavigation extends Component {
 
-    state = {
-        sectionName: null,
-        sectionItems: []
-    }
-
     render() {
         let navigationSections = null;
-
         navigationSections = this.props.menu.map(sectionName => {
             return (
                 <section key={Object.keys(sectionName)[0]}>

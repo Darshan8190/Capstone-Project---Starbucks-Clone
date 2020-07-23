@@ -1,15 +1,26 @@
-.elaboratedMenuWrapper{
-    padding-left: 12rem!important;
-    padding-right: 18%!important;
-    margin-top: 4rem!important;
-    flex: 1 1 0;
-    /* overflow: auto; */
-    height: 100%;
+.elaboratedMenuWrapper {
+  padding-left: 12rem !important;
+  padding-right: 18% !important;
+  margin-top: 4rem !important;
+  flex: 1 1 0;
+  /* overflow: auto; */
+  height: 100%;
 }
 
-.menuHeading{
-    font-weight: 700!important;
-    padding-bottom: 4.8rem!important;
-    font-size: 2.3rem;
-    margin: 0;    
+.menuHeading {
+  font-weight: 700 !important;
+  padding-bottom: 4.8rem !important;
+  font-size: 2.3rem;
+  margin: 0;
+}
+
+.menuLink {
+  font-weight: 600 !important;
+  padding-bottom: 0.8rem !important;
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+  margin: 0;
+  display: block;
+  text-decoration: none;
+  color: #a59e9e;
 }
