@@ -10,18 +10,18 @@ class ElaboratedMenu extends Component {
         sectionsInventory = this.props.menu.map(section => {
             return <ItemSection key={Object.keys(section)[0]} sectionName={Object.keys(section)[0]} inventories={Object.values(section)[0]} />
         })
-        let path = this.props.history.location.pathname.split('/').splice(1)[0].split('');
-        let first = path.shift();
-        // let path = this.props.history.location.pathname;
-        console.log(path);
-        console.log(first.toUpperCase());
-        console.log(path.unshift(first.toUpperCase()));
+     
+        let sectionLink = '';
+        let sectionHeading = "Menu";
+        if (this.props.type) {
+            sectionHeading = this.props.type;
+            sectionLink = `Menu / `
+        }
         return (
             <div className={classes.elaboratedMenuWrapper}>
-                <a href={this.props.history.location.pathname} className={classes.menuLink}>{path.join(' / ')}</a>
+                <a href="/menu" className={classes.menuLink}>{sectionLink}</a><span className={classes.menuLink}b>{sectionHeading}</span>
                 {/* <h1 className={classes.menuHeading}>Menu</h1> */}
-                <h1 className={classes.menuHeading}>{this.props.type}</h1>
-                {/* <h1 className={classes.menuHeading}>{path[2].replace('-',' ').toUpperCase()}</h1> */}
+                <h1 className={classes.menuHeading}>{sectionHeading}</h1>
                 {sectionsInventory}
             </div>
         )
