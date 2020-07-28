@@ -5,7 +5,28 @@ import SignInJoinNowFooter from '../SignInJoinNowFooter/SignInJoinNowFooter'
 
 class SignIn extends Component {
 
+    state = {
+        username: '',
+        password: '',
+    }
 
+    handleUsername(event) {
+        const value = event.target.value;
+        this.setState({
+            username: value
+        })
+    }
+    
+    handlePassword(event) {
+        const value = event.target.value;
+        this.setState({
+            password: value
+        })
+    }
+    
+    handleSubmit(event) {
+        event.preventDefault();
+    }
     render() {
         return (
             <main>
@@ -18,21 +39,21 @@ class SignIn extends Component {
                     <section className={classes.signInFormWrapper}>
                         <form>
                             <div className={classes.boxUserName}>
-                                <input type="text" name="uaername" required autocomplete="off" />
-                                <label for="username" className={classes.labelUserName}>
+                                <input type="text" name="uaername" required autoComplete="off" value={this.state.userName} onChange={(event) => this.handleUsername(event)} />
+                                <label htmlFor="username" className={classes.labelUserName}>
                                     <span className={classes.contentName}>Username or email address</span>
                                 </label>
                             </div>
                             <div className={classes.boxPassword}>
-                                <input type="password" name="password" required autocomplete="off" />
-                                <label for="password" className={classes.labelPassword}>
+                                <input type="password" name="password" required autoComplete="off" value={this.state.password} onChange={(event) => this.handlePassword(event)} />
+                                <label htmlFor="password" className={classes.labelPassword}>
                                     <span className={classes.contentPassword}>Password</span>
                                 </label>
                             </div>
                             <p className={classes.handleCheckbox}>
                                 <input type="checkbox" id="test1" />
-                                <label for="test1"></label>
-                                <p className={classes.checkboxSubscribeLabel}>Keep me signed in.</p>
+                                <label htmlFor="test1"></label>
+                                <span className={classes.checkboxSubscribeLabel}>Keep me signed in.</span>
                                 <a href="/" className={classes.checkboxDetailsLink}>Details</a>
                             </p>
                             <div className={classes.userHelpingLinks}>
@@ -43,6 +64,7 @@ class SignIn extends Component {
                                 type="submit"
                                 value="Sign in"
                                 className={classes.signinButton}
+                                onClick={(event) => this.handleSubmit(event)}
                             />
                         </form>
 
@@ -55,7 +77,6 @@ class SignIn extends Component {
                                 <p className={classes.joinNowParagraph}>Join Starbucks Rewards to earn free food and drinks, get free refills, pay and order with your phone, and more.</p>
                             </div>
                         </section>
-
 
                         <SignInJoinNowFooter />
                     </section>

@@ -9,18 +9,21 @@
 
 .menuHeading {
   font-weight: 700 !important;
-  padding-bottom: 4.8rem !important;
-  font-size: 2.3rem;
+  padding-bottom: 5.2rem !important;
+  font-size: 2.4rem;
   margin: 0;
 }
 
 .menuLink {
+  padding-bottom: 1rem !important;
   font-weight: 600 !important;
-  padding-bottom: 0.8rem !important;
   font-size: 1.4rem;
   line-height: 1.5rem;
-  margin: 0;
   text-decoration: none;
-  color: #a59e9e;
+  color: #969696;
+  letter-spacing: 0.1rem;
 }
 
+.spanLink{
+  color: #616161;
+}
