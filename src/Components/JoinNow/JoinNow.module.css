@@ -107,7 +107,7 @@
   bottom: -0.2rem;
   width: 100%;
   height: 100%;
-  border-bottom: 3px solid #00653e;
+  border-bottom: 2px solid #00653e;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }

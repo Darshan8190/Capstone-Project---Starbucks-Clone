@@ -29,7 +29,7 @@ class JoinNow extends Component {
 
   };
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     const userRegistrationInfo = {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
@@ -132,7 +132,7 @@ class JoinNow extends Component {
                 
                 <div className={classes.boxEmail}>
                   <input
-                    type="text"
+                    type="email"
                     name="emailid"
                     required
                     autoComplete="off"
@@ -179,7 +179,6 @@ class JoinNow extends Component {
                   <input
                     type="checkbox"
                     id="test1"
-                    required
                     name="hasConfirmedtoPromotion"
                     checked={this.state.hasConfirmedtoPromotion}
                     onChange={(event) => this.handleChange(event)}
