@@ -145,7 +145,7 @@
 }
 
 /* Rewards Title */
-.rewards_and_terms_WrapperDiv{
+.rewards_and_terms_WrapperDiv {
   padding-bottom: 6rem;
 }
 .rewardAndStarTitle,
@@ -162,7 +162,7 @@
   letter-spacing: 0.05rem;
 }
 
-.subscriptionLabel{
+.subscriptionLabel {
   margin-bottom: 2.4rem;
 }
 
@@ -171,9 +171,8 @@
   margin-bottom: 2.4rem;
 }
 
-.rewardsCheckbox{
+.rewardsCheckbox {
   display: flex;
-
 }
 
 .checkboxLabel {
@@ -199,7 +198,6 @@
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   margin-top: 0.2rem;
 }
-
 
 /* checked mark aspect */
 [type="checkbox"]:not(:checked) + label:after,
@@ -239,7 +237,7 @@
 }
 
 /* Submit Button */
-.submitButtonWrapper{
+.submitButtonWrapper {
   margin-top: 2rem;
 }
 
@@ -261,3 +259,53 @@
     0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
+.expander,
+.validationMessageWrapper {
+  height: auto;
+  overflow: hidden;
+  transition: height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.validationHint {
+  display: block !important;
+}
+
+.validationMessageWrapper {
+  padding-bottom: 0.6rem !important;
+}
+
+.validationMessage {
+  display: inline-block;
+  font-size: 1.3rem;
+  padding-left: 2rem;
+  vertical-align: middle;
+}
+
+.expander {
+  height: auto;
+  overflow: hidden;
+  transition: height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  color: #b1b1b1;
+}
+
+
+.Show{
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  font-weight: 500;
+  letter-spacing: 0.05rem;
+  transition: all 1s ease;
+  opacity: 1;
+  display: block;
+  padding-bottom: 1.4rem;
+}
+
+
+.Hide{
+  display: none;
+}

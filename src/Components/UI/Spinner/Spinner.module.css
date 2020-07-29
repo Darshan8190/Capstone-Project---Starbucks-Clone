@@ -1,3 +1,11 @@
+.Backdrop{
+width: 100%;
+height: 100%;
+background-color: rgba(48, 48, 48, 0.25);
+opacity: 10001;
+position: absolute;
+}
+
 .Loader,
 .Loader:before,
 .Loader:after {
@@ -7,7 +15,7 @@
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation: load7 1.8s infinite ease-in-out;
-  animation: load7 1.5s infinite ease-in-out;
+  animation: load7 1.3s infinite ease-in-out;
 }
 .Loader {
   color: #1f3933;

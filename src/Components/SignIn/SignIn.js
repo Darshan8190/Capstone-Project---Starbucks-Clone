@@ -1,30 +1,34 @@
 import React, { Component } from 'react';
 import classes from './SignIn.module.css'
-
 import SignInJoinNowFooter from '../SignInJoinNowFooter/SignInJoinNowFooter'
+import axios from 'axios'
 
 class SignIn extends Component {
 
     state = {
         username: '',
         password: '',
+        keepLogin : false
     }
 
-    handleUsername(event) {
-        const value = event.target.value;
+    handleChange = (event) => {
+        const value = event.target.type === "checkbox" ? event.target.checked : event.target.value
         this.setState({
-            username: value
+            ...this.state,
+            [event.target.name]: value
         })
     }
-    
-    handlePassword(event) {
-        const value = event.target.value;
-        this.setState({
-            password: value
-        })
-    }
-    
+
     handleSubmit(event) {
+        const userCredentials = {
+            username : this.state.username,
+            password : this.state.password,
+            keepLogin : this.state.keepLogin
+        }
+
+        axios.post("https://starbucks-clone-capstone.firebaseio.com/User_Credentials.json",userCredentials)
+            .then(response => console.log(response))
+            .catch(error => console.log(error))
         event.preventDefault();
     }
     render() {
@@ -37,21 +41,21 @@ class SignIn extends Component {
                     </section>
 
                     <section className={classes.signInFormWrapper}>
-                        <form>
+                        <form method="post" onSubmit={(event) => this.handleSubmit(event)}>
                             <div className={classes.boxUserName}>
-                                <input type="text" name="uaername" required autoComplete="off" value={this.state.userName} onChange={(event) => this.handleUsername(event)} />
+                                <input type="text" name="username" required autoComplete="off" value={this.state.username} onChange={(event) => this.handleChange(event)} />
                                 <label htmlFor="username" className={classes.labelUserName}>
                                     <span className={classes.contentName}>Username or email address</span>
                                 </label>
                             </div>
                             <div className={classes.boxPassword}>
-                                <input type="password" name="password" required autoComplete="off" value={this.state.password} onChange={(event) => this.handlePassword(event)} />
+                                <input type="password" name="password" required autoComplete="off" value={this.state.password} onChange={(event) => this.handleChange(event)} />
                                 <label htmlFor="password" className={classes.labelPassword}>
                                     <span className={classes.contentPassword}>Password</span>
                                 </label>
                             </div>
                             <p className={classes.handleCheckbox}>
-                                <input type="checkbox" id="test1" />
+                                <input type="checkbox" id="test1" name="keepLogin" checked={this.state.keepLogin} onChange={(event) => this.handleChange(event)} />
                                 <label htmlFor="test1"></label>
                                 <span className={classes.checkboxSubscribeLabel}>Keep me signed in.</span>
                                 <a href="/" className={classes.checkboxDetailsLink}>Details</a>
@@ -63,8 +67,7 @@ class SignIn extends Component {
                             <input
                                 type="submit"
                                 value="Sign in"
-                                className={classes.signinButton}
-                                onClick={(event) => this.handleSubmit(event)}
+                                className={classes.signinButton}    
                             />
                         </form>
 
