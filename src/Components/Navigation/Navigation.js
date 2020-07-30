@@ -1,12 +1,12 @@
 import React from "react";
 import classes from "./Navigation.module.css";
-import { Route } from 'react-router-dom'
-
+import { Link, Route } from 'react-router-dom'
 import Logo from '../Logo/Logo'
 import NavigationItems from './NavigationItems/NavigationItems'
 import StoreMarker from '../../icons/findAStore.png'
 import JoinNow from '../JoinNow/JoinNow'
 import SignIn from '../SignIn/SignIn'
+import StoreLocator from '../StoreLocator/StoreLocator'
 
 
 const navigation = (props) => (
@@ -18,11 +18,11 @@ const navigation = (props) => (
           <NavigationItems />
           <div className={classes.signInSignUpPageWrapper}>
             <div className={classes.signInSignUpPage}>
-              <a href="/" className={classes.findAStoreLink}>
+              <Link to="/store-locator" className={classes.findAStoreLink}>
                 <img src={StoreMarker} alt="Store Marker" className={classes.locationMarker} />
-                  Find a store</a>
-              <a href="/account/signin" className={classes.signInLink}>Sign in</a>
-              <a href="/account/create" className={classes.joinNowLink}>Join now</a>
+                  Find a store</Link>
+              <Link to="/account/signin" className={classes.signInLink}>Sign in</Link>
+              <Link to="/account/create" className={classes.joinNowLink}>Join now</Link>
             </div>
           </div>
         </div>
@@ -31,6 +31,7 @@ const navigation = (props) => (
 
     <Route path="/account/signin" exact component={SignIn} />
     <Route path="/account/create" exact component={JoinNow} />
+    <Route path="/store-locator" exaxt component={StoreLocator}/>
   </div>
 
 );

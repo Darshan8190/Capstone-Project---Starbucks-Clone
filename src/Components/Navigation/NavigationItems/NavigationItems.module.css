@@ -9,17 +9,18 @@
   padding-right: 2.4rem;
 }
 
-.listItemLink {
+.listItem a {
   text-decoration: none;
   color: #212121;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 2.1rem;
   font-weight: 700;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 0.01rem;
 }
 
-.listItemLink:hover,
-.listItemLink:active{
-    color: #008248;
+.listItem a:hover,
+.listItem a:active,
+.listItem a.active {
+  color: #008248;
 }

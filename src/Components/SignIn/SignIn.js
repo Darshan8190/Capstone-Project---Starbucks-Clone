@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './SignIn.module.css'
 import SignInJoinNowFooter from '../SignInJoinNowFooter/SignInJoinNowFooter'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class SignIn extends Component {
 
@@ -58,11 +59,11 @@ class SignIn extends Component {
                                 <input type="checkbox" id="test1" name="keepLogin" checked={this.state.keepLogin} onChange={(event) => this.handleChange(event)} />
                                 <label htmlFor="test1"></label>
                                 <span className={classes.checkboxSubscribeLabel}>Keep me signed in.</span>
-                                <a href="/" className={classes.checkboxDetailsLink}>Details</a>
+                                <Link to="/" className={classes.checkboxDetailsLink}>Details</Link>
                             </p>
                             <div className={classes.userHelpingLinks}>
-                                <a href="/" className={classes.forgotUsernamePassword}>Forgot your username?</a>
-                                <a href="/" className={classes.forgotUsernamePassword}>Forgot your password?</a>
+                                <Link to="/" className={classes.forgotUsernamePassword}>Forgot your username?</Link>
+                                <Link to="/" className={classes.forgotUsernamePassword}>Forgot your password?</Link>
                             </div>
                             <input
                                 type="submit"
@@ -75,7 +76,7 @@ class SignIn extends Component {
 
                         <section className={classes.joinNowSectionWrapper}>
                             <div className={classes.joinNowDiv}>
-                                <a href="/account/create" className={[classes.commonButtonLinkProps, classes.joinNowLink].join(' ')}>Join now</a>
+                                <Link to="/account/create" className={[classes.commonButtonLinkProps, classes.joinNowLink].join(' ')}>Join now</Link>
                                 <h3 className={classes.joinNowh3Tag}>Create an account and bring on the Rewards!</h3>
                                 <p className={classes.joinNowParagraph}>Join Starbucks Rewards to earn free food and drinks, get free refills, pay and order with your phone, and more.</p>
                             </div>

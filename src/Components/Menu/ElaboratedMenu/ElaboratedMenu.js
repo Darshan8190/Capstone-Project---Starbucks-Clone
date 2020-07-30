@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './ElaboratedMenu.module.css'
-
 import ItemSection from './ItemSection/ItemSection'
+import { Link } from 'react-router-dom'
 
 class ElaboratedMenu extends Component {
 
@@ -34,11 +34,10 @@ class ElaboratedMenu extends Component {
             sectionHeadingLink = this.props.type;
             sectionHeading = this.props.type;
         }
-
         return (
             <div className={classes.elaboratedMenuWrapper}>
                 <div>
-                    <a href="/menu" className={classes.menuLink}>{sectionLink}</a>
+                    <Link to="/menu" className={classes.menuLink}>{sectionLink}</Link>
                     <span className={[classes.menuLink, classes.spanLink].join(" ")}>{slash}{sectionHeadingLink}</span>
                 </div>
                 <h1 className={classes.menuHeading}>{sectionHeading}</h1>

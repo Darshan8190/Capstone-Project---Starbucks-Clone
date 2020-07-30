@@ -12,13 +12,12 @@ class Menu extends Component {
             <div className={classes.Container}>
                 <div className={classes.Wrapper}>
 
-                    {/* <MenuNavigation menu={this.props.menu["sectionNames"]} /> */}
                     <Route path="/menu" render={(props) => <MenuNavigation {...props} menu={this.props.menu["sectionNames"]} />} />
 
                     <Route path="/menu" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["sectionNames"]} />} />
 
-                    <Route path="/menu/drinks/hot-coffees" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["Hot Coffees"]} type={"Hot Coffees"}/>} />                    
-                    <Route path="/menu/drinks/hot-teas" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["Hot Teas"]} type={"Hot Teas"}/>} />
+                    <Route path="/menu/drinks/hot-coffees" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["Hot Coffees"]} type={"Hot Coffees"} />} />                    
+                    <Route path="/menu/drinks/hot-teas" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["Hot Teas"]} type={"Hot Teas"} />} />
                     <Route path="/menu/drinks/hot-drinks" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["Hot Drinks"]} type={"Hot Drinks"}/>} />
                     <Route path="/menu/drinks/frappuccino-blended-beverages" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["Frappuccino Blended Beverages"]} type={"Frappuccino Blended Beverages"} />} />
                     <Route path="/menu/drinks/cold-coffees" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["Cold Coffees"]} type={"Cold Coffees"} />} />

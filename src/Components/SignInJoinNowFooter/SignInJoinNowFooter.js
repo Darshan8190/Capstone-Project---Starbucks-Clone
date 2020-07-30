@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classes from './SignInJoinNowFooter.module.css'
+import { Link } from 'react-router-dom'
 
 class SignInJoinNowFooter extends Component {
 
@@ -16,17 +17,17 @@ class SignInJoinNowFooter extends Component {
                 <div className={classes.footerConatiner}>
                     <div className={classes.footerLinks}>
                         <div className={[classes.divWrapper].join(' ')}>
-                            <a href="/account/create" className={[classes.commonButtonLinkProps, classes.findAStoreLink].join(' ')}>Find a store</a>
+                            <Link to="/account/create" className={[classes.commonButtonLinkProps, classes.findAStoreLink].join(' ')}>Find a store</Link>
                         </div>
                         <div className={[classes.divWrapper, classes.languageDiv].join(' ')}>
                             <span className={[classes.commonTextPropsFooter, classes.languageEnglish].join(' ')}>English</span>
-                            <a href="/account/create" className={[classes.commonTextPropsFooter, classes.link].join(' ')}>Francais</a>
+                            <Link to="/account/create" className={[classes.commonTextPropsFooter, classes.link].join(' ')}>Francais</Link>
                         </div>
                         <div className={[classes.divWrapper, classes.policyDiv].join(' ')}>
-                            <a href="/account/create" className={[classes.commonTextPropsFooter, classes.link].join(' ')}>Responsibility</a>
-                            <a href="/account/create" className={[classes.commonTextPropsFooter, classes.link].join(' ')}>Web Accessibility</a>
-                            <a href="/account/create" className={[classes.commonTextPropsFooter, classes.link].join(' ')}>Privacy Policy</a>
-                            <a href="/account/create" className={[classes.commonTextPropsFooter, classes.link].join(' ')}>Terms of Use</a>
+                            <Link to="/account/create" className={[classes.commonTextPropsFooter, classes.link].join(' ')}>Responsibility</Link>
+                            <Link to="/account/create" className={[classes.commonTextPropsFooter, classes.link].join(' ')}>Web Accessibility</Link>
+                            <Link to="/account/create" className={[classes.commonTextPropsFooter, classes.link].join(' ')}>Privacy Policy</Link>
+                            <Link to="/account/create" className={[classes.commonTextPropsFooter, classes.link].join(' ')}>Terms of Use</Link>
                         </div>
                     </div>
                     <div className={[classes.commonTextPropsFooter, classes.copyrightDiv].join(' ')}>&copy;&nbsp;{this.getCurrentYear()}&nbsp;Starbucks</div>
