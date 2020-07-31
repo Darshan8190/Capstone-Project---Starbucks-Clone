@@ -1,5 +1,7 @@
 .mainWrapper {
   display: flex;
+  width: 100%;
+  height: 100%;
 }
 .storeLocatorWrapper {
   display: flex;
@@ -7,15 +9,40 @@
   flex-basis: 40vw;
   flex-grow: 0;
   flex-shrink: 0;
-  height: 100% !important;
+  height: 100%!important;
+  /* width: 40%; */
   position: relative;
+  /* order: 1; */
   z-index: 1;
   overflow: hidden;
+  align-items: center;
+  justify-content: center;
   background-color: #ffffff;
+}
 
+.searchBarWrapper{
+margin-bottom: 1.6rem;
+padding-bottom: 0.8rem;
+box-shadow: none;
+flex-shrink: 0;
+position: relative;
+z-index: 2;
+min-height: 50px;
+background-color: #ffffff;
+padding-left: 4rem;
+padding-right: 4rem;
+}
+
+.controls{
+  padding-top: 1.6rem;
+  display: flex;
+  position: relative;
+  z-index: 2;
+  background-color: #ffffff;
 }
 
 .sectionWrapper {
+  /* height: 100% !important; */
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
@@ -24,16 +51,6 @@
   background-color: #ffffff;
   overflow: auto;
   white-space: normal;
-}
-
-.mapWrapper {
-  background-color: lightcoral;
-  height: 100% !important;
-}
-
-.searchResultDisplayWrapper {
-  flex-grow: 1 !important;
-  flex-shrink: 0 !important;
 }
 
 .hiddenVisibility {
@@ -46,6 +63,11 @@
   font-size: 2.3rem;
   font-weight: 400;
   margin: 0;
+}
+
+.searchResultDisplayWrapper {
+  flex-grow: 1 !important;
+  flex-shrink: 0 !important;
 }
 .articalWRapper {
   display: flex;
@@ -86,7 +108,6 @@
   cursor: pointer;
 }
 .findStoreFooterWrapper {
-  /* padding-left: 1rem; */
   padding: 2.4rem 4rem !important;
 }
 
@@ -102,3 +123,9 @@
   padding-left: 0.8rem !important;
   margin-left: 0.8rem !important;
 }
+
+
+/* .mapWrapper {
+  background-color: lightcoral;
+  height: 100% !important;
+} */

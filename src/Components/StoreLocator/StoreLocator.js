@@ -1,13 +1,18 @@
 import React from 'react';
-import Aux from '../../Auxiliary/Auxiliary'
 import classes from './StoreLocator.module.css'
 
 const storeLocator = (props) => (
-    <Aux>
+
         <main className={classes.mainWrapper}>
 
             <div className={classes.storeLocatorWrapper} >
-                <div>search bar</div>
+                <div className={classes.searchBarWrapper}>
+                    <diV className={classes.controls}>
+                        <form>
+                            
+                        </form>
+                    </diV>
+                </div>
                 <section className={classes.sectionWrapper}>
                     <h2 className={classes.hiddenVisibility}>Store Search Results</h2>
                     <div className={classes.searchResultDisplayWrapper}>
@@ -29,7 +34,7 @@ const storeLocator = (props) => (
             </div>
             <div className={classes.mapWrapper}>Map</div>
         </main>
-    </Aux>
+    
 )
 
 export default storeLocator;
