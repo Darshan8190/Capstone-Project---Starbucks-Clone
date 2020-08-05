@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import classes from './SignIn.module.css'
 import SignInJoinNowFooter from '../SignInJoinNowFooter/SignInJoinNowFooter'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
+import Menu from '../Menu/Menu'
 
 class SignIn extends Component {
 
@@ -29,8 +30,11 @@ class SignIn extends Component {
 
         axios.post("https://starbucks-clone-capstone.firebaseio.com/User_Credentials.json",userCredentials)
             .then(response => console.log(response))
-            .catch(error => console.log(error))
-        event.preventDefault();
+            .catch(error => console.log(error));
+            
+            // <Route path="/menu" exact component={Menu} />
+
+        // event.preventDefault();
     }
     render() {
         return (
@@ -42,7 +46,7 @@ class SignIn extends Component {
                     </section>
 
                     <section className={classes.signInFormWrapper}>
-                        <form method="post" onSubmit={(event) => this.handleSubmit(event)}>
+                        <form method="post" onSubmit={(event) => this.handleSubmit(event)} action="/menu">
                             <div className={classes.boxUserName}>
                                 <input type="text" name="username" required autoComplete="off" value={this.state.username} onChange={(event) => this.handleChange(event)} />
                                 <label htmlFor="username" className={classes.labelUserName}>

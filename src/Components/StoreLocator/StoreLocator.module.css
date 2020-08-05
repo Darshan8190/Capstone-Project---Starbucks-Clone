@@ -1,7 +1,8 @@
 .mainWrapper {
-  display: flex;
   width: 100%;
   height: 100%;
+  display: flex;
+  position: relative;
 }
 .storeLocatorWrapper {
   display: flex;
@@ -9,36 +10,85 @@
   flex-basis: 40vw;
   flex-grow: 0;
   flex-shrink: 0;
-  height: 100%!important;
-  /* width: 40%; */
+  /* height: 90vh !important; */
   position: relative;
   /* order: 1; */
   z-index: 1;
   overflow: hidden;
-  align-items: center;
   justify-content: center;
   background-color: #ffffff;
 }
 
-.searchBarWrapper{
-margin-bottom: 1.6rem;
-padding-bottom: 0.8rem;
-box-shadow: none;
-flex-shrink: 0;
-position: relative;
-z-index: 2;
-min-height: 50px;
-background-color: #ffffff;
-padding-left: 4rem;
-padding-right: 4rem;
+.searchBarWrapper {
+  margin-bottom: 1.6rem;
+  padding-bottom: 0.8rem;
+  box-shadow: none;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  min-height: 50px;
+  background-color: #ffffff;
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 
-.controls{
+.controls {
   padding-top: 1.6rem;
   display: flex;
   position: relative;
   z-index: 2;
   background-color: #ffffff;
+}
+
+.form{
+  display: flex;
+  position: relative;
+flex: 1;
+height: 55px;
+}
+
+.inputField{
+  font-size: 1.8rem!important;
+  padding-right: 4.8rem!important;
+  line-height: normal;
+  border: 0;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;padding: 10px 0 0;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  outline: none;
+  appearance: none;
+
+}
+
+.buttonConatiner{
+display: block;
+width: 4.8rem;
+height: 100%;
+position: absolute;
+right: 0;  
+}
+
+.button{
+  color: rgba(0,0,0,.56);
+  transition: color .2s ease-out;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: visible;
+  outline: none;
+}
+.svgWRapper {
+  width: 24px;
+  height: 24px;
+  overflow: visible;
 }
 
 .sectionWrapper {
@@ -106,6 +156,7 @@ padding-right: 4rem;
   transition: all 0.2s ease;
   margin-top: 2.4rem !important;
   cursor: pointer;
+  outline: none;
 }
 .findStoreFooterWrapper {
   padding: 2.4rem 4rem !important;
@@ -124,8 +175,7 @@ padding-right: 4rem;
   margin-left: 0.8rem !important;
 }
 
-
-/* .mapWrapper {
-  background-color: lightcoral;
+ .mapWrapper {
   height: 100% !important;
-} */
+  /* min-height: 78vh; */
+} 
