@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import classes from './Menu.module.css';
 import ElaboratedMenu from './ElaboratedMenu/ElaboratedMenu'
 import MenuNavigation from '../Menu/MenuNavigation/MenuNavigation'
-import SignInJoinNowFooter from '../SignInJoinNowFooter/SignInJoinNowFooter'
-import { Route } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
+import ItemDescription from '../Menu/ElaboratedMenu/ItemSection/Item/ItemDescription/ItemDescription'
+
 
 class Menu extends Component {
 
@@ -11,10 +12,30 @@ class Menu extends Component {
         return (
             <div className={classes.Container}>
                 <div className={classes.Wrapper}>
-
+                    <Redirect from="/" to="/menu" />
                     <Route path="/menu" render={(props) => <MenuNavigation {...props} menu={this.props.menu["sectionNames"]} />} />
 
                     <Route path="/menu" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["sectionNames"]} />} />
+
+                    <Switch>
+                        <Route path="/menu/drinks/hot-coffees/:id" component={ItemDescription} />
+                        <Route path="/menu/drinks/hot-teas/:id" component={ItemDescription} />
+                        <Route path="/menu/drinks/hot-drinks/:id" component={ItemDescription} />
+                        <Route path="/menu/drinks/frappuccino-blended-beverages/:id" component={ItemDescription} />
+                        <Route path="/menu/drinks/cold-coffees/:id" component={ItemDescription} />
+                        <Route path="/menu/drinks/iced-teas/:id" component={ItemDescription} />
+                        <Route path="/menu/drinks/cold-drinks/:id" component={ItemDescription} />
+
+                        <Route path="/menu/food/hot-breakfast/:id" component={ItemDescription} />
+                        <Route path="/menu/food/bakery/:id" component={ItemDescription} />
+                        <Route path="/menu/food/lunch/:id" component={ItemDescription} />
+                        <Route path="/menu/food/snacks-&-sweets/:id" component={ItemDescription} />
+
+                        <Route path="/menu/at-home-coffee/whole-bean/:id" component={ItemDescription} />
+                        <Route path="/menu/at-home-coffee/verismo-pods/:id" component={ItemDescription} />
+                        <Route path="/menu/at-home-coffee/via-instant/:id" component={ItemDescription} />
+                        <Route path="/menu/at-home-coffee/k-cup-pods/:id" component={ItemDescription} />
+                    </Switch>
 
                     <Route path="/menu/drinks/hot-coffees" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["Hot Coffees"]} type={"Hot Coffees"} />} />
                     <Route path="/menu/drinks/hot-teas" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["Hot Teas"]} type={"Hot Teas"} />} />
@@ -35,9 +56,6 @@ class Menu extends Component {
                     <Route path="/menu/at-home-coffee/k-cup-pods" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["K-Cup Pods"]} type={"K-Cup Pods"} />} />
 
                 </div>
-                {/* <div className={classes.Footer}>
-                    <SignInJoinNowFooter />
-                </div> */}
             </div>
         )
     }

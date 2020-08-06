@@ -8,7 +8,7 @@ import Spinner from '../../Components/UI/Spinner/Spinner'
 class Layout extends Component {
 
   state = {
-    menu: null,
+    menu: null
   };
 
   componentDidMount() {
@@ -16,7 +16,7 @@ class Layout extends Component {
       .get("https://starbucks-clone-capstone.firebaseio.com/menu.json")
       .then((response) => {
         this.setState({
-          menu: response.data,
+          menu: response.data
         });
       })
       .catch((error) => console.log(error));
@@ -24,11 +24,13 @@ class Layout extends Component {
 
   render() {
     let menu = null;
+
     if (this.state.menu) {
-      menu = <Menu menu={this.state.menu} showMenuNavigation={this.state.showMenuNavigation} />;
+      menu = <Menu menu={this.state.menu} showMenuNavigation={this.state.showMenuNavigation} />
     } else {
       menu = <Spinner />
     }
+
     return (
       <Aux>
         <Navigation />

@@ -17,7 +17,7 @@ class SignInJoinNowFooter extends Component {
                 <div className={classes.footerConatiner}>
                     <div className={classes.footerLinks}>
                         <div className={[classes.divWrapper].join(' ')}>
-                            <Link to="/account/create" className={[classes.commonButtonLinkProps, classes.findAStoreLink].join(' ')}>Find a store</Link>
+                            <Link to="/store-locator" className={[classes.commonButtonLinkProps, classes.findAStoreLink].join(' ')}>Find a store</Link>
                         </div>
                         <div className={[classes.divWrapper, classes.languageDiv].join(' ')}>
                             <span className={[classes.commonTextPropsFooter, classes.languageEnglish].join(' ')}>English</span>
