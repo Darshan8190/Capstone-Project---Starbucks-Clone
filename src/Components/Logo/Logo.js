@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../../icons/logo.png'
 import classes from './Logo.module.css'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const logo = (props) => (
     <div className={classes.logoWrapper}>

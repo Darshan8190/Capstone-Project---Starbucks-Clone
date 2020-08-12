@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import classes from './SignIn.module.css'
 import SignInJoinNowFooter from '../SignInJoinNowFooter/SignInJoinNowFooter'
 import axios from 'axios'
-import { Route, Link } from 'react-router-dom'
-import Menu from '../Menu/Menu'
+import { Link } from 'react-router-dom'
+
 
 class SignIn extends Component {
 

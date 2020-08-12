@@ -7,17 +7,17 @@ import ItemDescription from '../Menu/ElaboratedMenu/ItemSection/Item/ItemDescrip
 
 
 class Menu extends Component {
-
     render() {
         return (
             <div className={classes.Container}>
+                <Switch>
+
+                </Switch>
+
                 <div className={classes.Wrapper}>
-                    <Redirect from="/" to="/menu" />
-                    <Route path="/menu" render={(props) => <MenuNavigation {...props} menu={this.props.menu["sectionNames"]} />} />
-
-                    <Route path="/menu" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["sectionNames"]} />} />
-
+                    {/* <Redirect from="/" to="/menu" /> */}
                     <Switch>
+
                         <Route path="/menu/drinks/hot-coffees/:id" component={ItemDescription} />
                         <Route path="/menu/drinks/hot-teas/:id" component={ItemDescription} />
                         <Route path="/menu/drinks/hot-drinks/:id" component={ItemDescription} />
@@ -35,7 +35,12 @@ class Menu extends Component {
                         <Route path="/menu/at-home-coffee/verismo-pods/:id" component={ItemDescription} />
                         <Route path="/menu/at-home-coffee/via-instant/:id" component={ItemDescription} />
                         <Route path="/menu/at-home-coffee/k-cup-pods/:id" component={ItemDescription} />
+
+                        <Route path="/menu" render={(props) => <MenuNavigation {...props} menu={this.props.menu["sectionNames"]} />} />
                     </Switch>
+
+
+                    <Route path="/menu" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["sectionNames"]} />} />
 
                     <Route path="/menu/drinks/hot-coffees" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["Hot Coffees"]} type={"Hot Coffees"} />} />
                     <Route path="/menu/drinks/hot-teas" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["Hot Teas"]} type={"Hot Teas"} />} />

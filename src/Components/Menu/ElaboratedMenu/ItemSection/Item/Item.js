@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Item.module.css'
-import { withRouter, Link, Route, Switch, Router } from 'react-router-dom'
-import ItemDescription from './ItemDescription/ItemDescription'
+import { withRouter, Link } from 'react-router-dom'
 
 
 class Item extends Component {
@@ -25,7 +24,9 @@ class Item extends Component {
                         <div className={classes.imageBox}></div>
                         <h3 className={classes.itemHeading}>{this.props.itemName}</h3>
                         <Link to={{
-                            pathname: this.state.pathname
+                            pathname: this.state.pathname,
+                            state: { showManu: false },
+                            hash:this.props.itemName
                         }} className={classes.itemLinkOverlay}>
                         </Link>
                     </div>
