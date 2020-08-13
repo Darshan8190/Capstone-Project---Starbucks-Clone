@@ -4,8 +4,23 @@ import classes from './ItemDescription.module.css'
 import StoreMarker from '../../../../../../icons/findAStore.png'
 
 class ItemDescription extends Component {
+    state = {
+        itemName: null
+    }
+    componentDidMount() {
+        let finalString = this.props.location.hash;
+        finalString = finalString.substring(1)
+        this.setState({
+            itemName: finalString
+        })
+    }
+
+    function orderConfirm(){
+        console.log("order placed");
+    }
+    
     render() {
-        console.log(this.props);
+        // console.log(this.props.location.hash);
         return (
             <main className={classes.main}>
                 <div className={classes.productNameDivWRapper}>
@@ -17,9 +32,9 @@ class ItemDescription extends Component {
                                 <span className={classes.slashColor}>&nbsp;/&nbsp;</span>
                                 <Link to="/menu/drinks/hot-coffees" className={classes.linkFormattor}>Hot Coffees</Link>
                                 <span className={classes.slashColor}>&nbsp;/&nbsp;</span>
-                                <span className={classes.textSemiBold}>{this.props.location.hash}</span>
+                                <span className={classes.textSemiBold}>{this.state.itemName}</span>
                             </div>
-                            <h1 className={classes.itemName}>{this.props.location.hash}</h1>
+                            <h1 className={classes.itemName}>{this.state.itemName}</h1>
                             <div className={classes.itemDescription}>
                                 <div className={classes.itemDesLineBrake}>
                                     A one-to-one combination of fresh-brewed coffee and steamed milk add up to one distinctly delicious coffee drink remarkably mixed.
@@ -42,7 +57,7 @@ class ItemDescription extends Component {
                             <div className={classes.buttonContainer}>
                                 <span className={classes.buttonSpan}>
                                     <div className={classes.buttonVisible}>
-                                        <button className={classes.mainButton}>Add to Order</button>
+                                        <button className={classes.mainButton} onClick={() => this.orderConfirm()}>Add to Order</button>
                                     </div>
                                 </span>
                             </div>

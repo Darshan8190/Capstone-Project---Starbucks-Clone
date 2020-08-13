@@ -15,7 +15,7 @@ class Menu extends Component {
                 </Switch>
 
                 <div className={classes.Wrapper}>
-                    {/* <Redirect from="/" to="/menu" /> */}
+                    <Redirect from="/" to="/menu" />
                     <Switch>
 
                         <Route path="/menu/drinks/hot-coffees/:id" component={ItemDescription} />
