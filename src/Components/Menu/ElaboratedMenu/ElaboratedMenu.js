@@ -18,11 +18,6 @@ class ElaboratedMenu extends Component {
     }
 
     render() {
-        let sectionsInventory = null;
-        sectionsInventory = this.props.menu.map(section => {
-            return <ItemSection key={Object.keys(section)[0]} sectionName={Object.keys(section)[0]} inventories={Object.values(section)[0]} />
-        })
-
         let sectionLink = '';
         let slash = null;
         let sectionHeadingLink = '';
@@ -34,6 +29,12 @@ class ElaboratedMenu extends Component {
             sectionHeadingLink = this.props.type;
             sectionHeading = this.props.type;
         }
+
+        let sectionsInventory = null;
+        sectionsInventory = this.props.menu.map(section => {
+            return <ItemSection key={Object.keys(section)[0]} sectionName={Object.keys(section)[0]} inventories={Object.values(section)[0]} sectionType={this.props.type}/>
+        })
+
         return (
             <div className={classes.elaboratedMenuWrapper}>
                 <div>

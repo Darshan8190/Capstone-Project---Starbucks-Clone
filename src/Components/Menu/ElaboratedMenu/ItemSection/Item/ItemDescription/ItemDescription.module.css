@@ -1,5 +1,4 @@
 .main {
-  /* padding-top: 10rem; */
   position: relative;
   z-index: 1;
   display: block;
@@ -8,17 +7,18 @@
 
 .productNameDivWRapper {
   position: fixed;
-  top: 99px;
+  top: 10rem;
   bottom: 0;
   left: 0;
   overflow: auto;
-  width: 40vw;
+  width: 38.2vw;
   z-index: 1;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24), 0 4px 4px rgba(0, 0, 0, 0.12);
+  /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24), 0 4px 4px rgba(0, 0, 0, 0.12); */
   padding-top: 0.8rem !important;
   background-color: #ffffff;
   display: flex !important;
   flex-direction: column !important;
+  /* border-right: 3px solid green; */
 }
 
 .divContainer {
@@ -89,14 +89,14 @@
 }
 
 .productDescriptionDivWRapper {
-  margin-left: 40vw;
-  background-color: #f7f7f7;
+  margin-left: 30vw;
+  background-color: #eeeeee !important;
 }
 
 .productDescriptionDivContainer {
   position: relative !important;
   padding: 3.2rem 4rem 9rem 4rem !important;
-  background-color: #f7f7f7 !important;
+  background-color: #eeeeee !important;
   width: 100%;
 }
 

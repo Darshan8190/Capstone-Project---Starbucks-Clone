@@ -25,8 +25,11 @@ class Item extends Component {
                         <h3 className={classes.itemHeading}>{this.props.itemName}</h3>
                         <Link to={{
                             pathname: this.state.pathname,
-                            state: { showManu: false },
-                            hash:this.props.itemName
+                            state: {
+                                itemName: this.props.itemName,
+                                parentLinkPath: this.props.match.url,
+                                sectionType: this.props.sectionType
+                            },
                         }} className={classes.itemLinkOverlay}>
                         </Link>
                     </div>

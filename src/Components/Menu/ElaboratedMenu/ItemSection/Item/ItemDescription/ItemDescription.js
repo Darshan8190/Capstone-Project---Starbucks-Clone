@@ -5,22 +5,24 @@ import StoreMarker from '../../../../../../icons/findAStore.png'
 
 class ItemDescription extends Component {
     state = {
-        itemName: null
+        itemName: null,
+        sectionType : null,
+        parentLinkPath : null
     }
     componentDidMount() {
-        let finalString = this.props.location.hash;
-        finalString = finalString.substring(1)
         this.setState({
-            itemName: finalString
+            itemName: this.props.location.state.itemName,
+            sectionType : this.props.location.state.sectionType,
+            parentLinkPath : this.props.location.state.parentLinkPath
         })
     }
 
-    function orderConfirm(){
-        console.log("order placed");
+    orderConfirm = () => {
+        console.log("order placed"); 
     }
     
+    
     render() {
-        // console.log(this.props.location.hash);
         return (
             <main className={classes.main}>
                 <div className={classes.productNameDivWRapper}>
@@ -30,7 +32,7 @@ class ItemDescription extends Component {
                             <div className={classes.linkWrapper}>
                                 <Link to="/menu" className={classes.linkFormattor}>Menu</Link>
                                 <span className={classes.slashColor}>&nbsp;/&nbsp;</span>
-                                <Link to="/menu/drinks/hot-coffees" className={classes.linkFormattor}>Hot Coffees</Link>
+                                <Link to={this.state.parentLinkPath} className={classes.linkFormattor}>{this.state.sectionType}</Link>
                                 <span className={classes.slashColor}>&nbsp;/&nbsp;</span>
                                 <span className={classes.textSemiBold}>{this.state.itemName}</span>
                             </div>

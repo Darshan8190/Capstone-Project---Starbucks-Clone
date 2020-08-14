@@ -8,7 +8,7 @@ class ItemSection extends Component {
 
         let items = null;
         items = this.props.inventories.map(item => {
-            return <Item key={item} itemName={item} sectionName={this.props.sectionName} />
+            return <Item key={item} itemName={item} sectionName={this.props.sectionName} sectionType={this.props.sectionType}/>
         })
 
         return (
