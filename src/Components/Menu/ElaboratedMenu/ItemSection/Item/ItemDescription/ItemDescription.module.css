@@ -7,7 +7,7 @@
 
 .productNameDivWRapper {
   position: fixed;
-  top: 10rem;
+  top: 15rem;
   bottom: 0;
   left: 0;
   overflow: auto;
@@ -18,7 +18,6 @@
   background-color: #ffffff;
   display: flex !important;
   flex-direction: column !important;
-  /* border-right: 3px solid green; */
 }
 
 .divContainer {

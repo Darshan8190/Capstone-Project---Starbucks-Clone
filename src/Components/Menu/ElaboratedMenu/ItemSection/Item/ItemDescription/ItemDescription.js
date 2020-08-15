@@ -1,27 +1,38 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom'
 import classes from './ItemDescription.module.css'
-import StoreMarker from '../../../../../../icons/findAStore.png'
+import StoreMarker from '../../../../../../icons/findAStore.png';
+import axios from 'axios'
 
 class ItemDescription extends Component {
     state = {
         itemName: null,
-        sectionType : null,
-        parentLinkPath : null
-    }
+    };
     componentDidMount() {
         this.setState({
             itemName: this.props.location.state.itemName,
-            sectionType : this.props.location.state.sectionType,
-            parentLinkPath : this.props.location.state.parentLinkPath
         })
     }
 
-    orderConfirm = () => {
-        console.log("order placed"); 
+    orderConfirm = (event) => {
+        const itemName = {
+            name : this.props.location.state.itemName
+        }
+        console.log("order placed");
+
+         event.preventDefault();
+        let formData = new FormData();
+        // formData.append("itemName",this.props.location.state.itemName);
+        formData.append("itemName", "test" );
+        console.log(itemName);
+        const url = "http://localhost:80/reactbackend/";
+        axios.post(url,formData)
+            .then(res => console.log(res.data))
+            .catch(error => console.log(error));
+
     }
-    
-    
+
+
     render() {
         return (
             <main className={classes.main}>
@@ -32,7 +43,7 @@ class ItemDescription extends Component {
                             <div className={classes.linkWrapper}>
                                 <Link to="/menu" className={classes.linkFormattor}>Menu</Link>
                                 <span className={classes.slashColor}>&nbsp;/&nbsp;</span>
-                                <Link to={this.state.parentLinkPath} className={classes.linkFormattor}>{this.state.sectionType}</Link>
+                                <Link to={this.props.location.state.parentLinkPath} className={classes.linkFormattor}>{this.props.location.state.sectionType}</Link>
                                 <span className={classes.slashColor}>&nbsp;/&nbsp;</span>
                                 <span className={classes.textSemiBold}>{this.state.itemName}</span>
                             </div>
@@ -59,7 +70,9 @@ class ItemDescription extends Component {
                             <div className={classes.buttonContainer}>
                                 <span className={classes.buttonSpan}>
                                     <div className={classes.buttonVisible}>
-                                        <button className={classes.mainButton} onClick={() => this.orderConfirm()}>Add to Order</button>
+
+                                        <button type="submit" className={classes.mainButton} onClick={this.orderConfirm}>Add to Order</button>
+
                                     </div>
                                 </span>
                             </div>
