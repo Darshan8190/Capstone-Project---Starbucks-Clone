@@ -6,27 +6,33 @@ import axios from 'axios'
 
 class ItemDescription extends Component {
     state = {
-        itemName: null,
+        itemName: '',
+        parentLinkPath: '',
+        sectionType: ''
+
     };
     componentDidMount() {
         this.setState({
             itemName: this.props.location.state.itemName,
+            parentLinkPath: this.props.location.state.parentLinkPath,
+            sectionType: this.props.location.state.sectionType
         })
     }
 
-    orderConfirm = (event) => {
-        const itemName = {
-            name : this.props.location.state.itemName
-        }
+    orderConfirm = (e) => {
+        e.preventDefault();
+
         console.log("order placed");
 
-         event.preventDefault();
         let formData = new FormData();
-        // formData.append("itemName",this.props.location.state.itemName);
-        formData.append("itemName", "test" );
-        console.log(itemName);
-        const url = "http://localhost:80/reactbackend/";
-        axios.post(url,formData)
+        formData.append('item', this.state.itemName);
+
+        const url = "http://localhost:80/reactbackend/index.php";
+        axios.post(url, formData, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
             .then(res => console.log(res.data))
             .catch(error => console.log(error));
 
@@ -43,7 +49,7 @@ class ItemDescription extends Component {
                             <div className={classes.linkWrapper}>
                                 <Link to="/menu" className={classes.linkFormattor}>Menu</Link>
                                 <span className={classes.slashColor}>&nbsp;/&nbsp;</span>
-                                <Link to={this.props.location.state.parentLinkPath} className={classes.linkFormattor}>{this.props.location.state.sectionType}</Link>
+                                <Link to={this.state.parentLinkPath} className={classes.linkFormattor}>{this.state.sectionType}</Link>
                                 <span className={classes.slashColor}>&nbsp;/&nbsp;</span>
                                 <span className={classes.textSemiBold}>{this.state.itemName}</span>
                             </div>
@@ -71,7 +77,8 @@ class ItemDescription extends Component {
                                 <span className={classes.buttonSpan}>
                                     <div className={classes.buttonVisible}>
 
-                                        <button type="submit" className={classes.mainButton} onClick={this.orderConfirm}>Add to Order</button>
+                                        <button type="submit" className={classes.mainButton} onClick={(event) => this.orderConfirm(event)}>Add to Order</button>
+
 
                                     </div>
                                 </span>
