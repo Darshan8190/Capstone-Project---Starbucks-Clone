@@ -40,3 +40,29 @@
     display: block;
     cursor: pointer;
 }
+
+
+@media only screen and (min-width: 769px) and (max-width: 1024px){
+    .elaboratedMenuWrapper{
+      padding-left: 7rem!important;
+      padding-right: 8%!important;
+    }
+    .imageBox{
+        max-width: 92px;
+        height: 92px;
+    }
+    
+   }
+
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+    
+   
+.imageBox{
+    max-width: 72px;
+    height: 72px;
+}
+.itemHeading{
+    font-size: 1.8rem;
+ 
+}
+  }

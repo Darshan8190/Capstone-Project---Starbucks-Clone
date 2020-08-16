@@ -42,7 +42,10 @@ class SignIn extends Component {
                 <div className={classes.signinUserWrapper}>
 
                     <section className={classes.labelwrapper}>
+                    <div className={classes.headingWrapper}>
+
                         <h1 className={classes.createAnAccountLabel}>Sign in or create an account</h1>
+                    </div>
                     </section>
 
                     <section className={classes.signInFormWrapper}>

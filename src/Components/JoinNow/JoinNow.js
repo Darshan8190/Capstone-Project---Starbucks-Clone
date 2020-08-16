@@ -62,32 +62,16 @@ class JoinNow extends Component {
   };
 
   render() {
-    // let display = null;
-    // if (this.state.focus) {
-    //   display = (
-    //     <div className={classes.expander}>
-    //       <div>
-    //         <span className={classes.validationHint}>
-    //           <div className={classes.validationMessageWrapper}>
-    //             <span>x</span>
-    //             <span className={classes.validationMessage}>
-    //               Please enter your email address.
-    //             </span>
-    //           </div>
-    //           <p className={classes.yourUsernameMessage}>
-    //             This will be your username
-    //           </p>
-    //         </span>
-    //       </div>
-    //     </div>
-    //   );
-    // }
+
   
     return (
       <main className={classes.wrapper}>
         <div className={classes.createUserWrapper}>
           <section className={classes.labelwrapper}>
+          <div className={classes.headingWrapper}>
+
             <p className={classes.createAnAccountLabel}>Create an account</p>
+          </div>
           </section>
 
           <section className={classes.joinNowForm}>

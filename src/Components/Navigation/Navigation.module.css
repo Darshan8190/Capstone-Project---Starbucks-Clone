@@ -79,3 +79,30 @@ margin-right: 2rem;
 .signInSignUpPage .joinNowLink:hover {
   background-color: #4c4c4c;
 }
+
+
+
+@media only screen and (min-width: 769px) and (max-width: 1024px){
+.Navigation{
+  padding: 0 2.5rem;
+
+}
+ 
+ }
+
+ @media only screen and (min-width: 426px) and (max-width: 768px){
+ 
+  .Navigation{
+    padding: 0 2rem;
+  
+  }
+  .signInSignUpPageWrapper {
+    margin-left: 2rem;
+  }
+  .findAStoreLink{
+    margin-right: 2rem;
+  }
+  .signInLink{
+    margin-right: 1.4rem;
+  }
+  }

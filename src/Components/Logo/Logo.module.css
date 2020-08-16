@@ -5,3 +5,11 @@
   width: 5.1rem;
   height: 5.1rem;
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+ 
+  .logoWrapper{
+    padding-right: 2rem;
+  }
+   
+  }
