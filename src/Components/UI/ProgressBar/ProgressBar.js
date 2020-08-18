@@ -4,12 +4,12 @@ const progressBar = (props) => {
     const { completed } = props;
 
     const containerStyles = {
-        height: 20,
-        width: '80%',
+        height: 14,
+        width: '60%',
         backgroundColor: "#e0e0de",
         borderRadius: 50,
         // margin: 50
-        margin:"50px auto"
+        margin:"40px auto",
       }
     
       const fillerStyles = {

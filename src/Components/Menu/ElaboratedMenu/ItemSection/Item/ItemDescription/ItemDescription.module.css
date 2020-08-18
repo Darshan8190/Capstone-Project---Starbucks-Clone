@@ -3,11 +3,16 @@
   z-index: 1;
   display: block;
   width: 100vw;
+  margin-left: -13.1rem;
 }
-
+.pb{
+  position: relative;
+  z-index: 1001;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
 .productNameDivWRapper {
   position: fixed;
-  top: 15rem;
+  top: 0rem;
   bottom: 0;
   left: 0;
   overflow: auto;
@@ -17,6 +22,7 @@
   background-color: #ffffff;
   display: flex !important;
   flex-direction: column !important;
+
 }
 
 .divContainer {
@@ -87,9 +93,13 @@
 }
 
 .productDescriptionDivWRapper {
-  margin-left: 30.9vw;
+  position: absolute;
+  right: 0;
+  /* margin-left: 25vw; */
   background-color: #eeeeee !important;
   width: 60vw;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+
 }
 
 .productDescriptionDivContainer {
@@ -286,6 +296,12 @@
     margin-right: 1.6rem!important;
 }
 
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .main{
+    margin-left: -9.1rem;
+  }
+}
+
 
 @media only screen and (min-width: 426px) and (max-width: 768px) {
   
@@ -320,7 +336,7 @@
 
 .productDescriptionDivWRapper{
   width: 100vw;
-  margin-left: 0;
+  /* margin-left: 0; */
   display: block;
 }
 .productDescriptionDivContainer{

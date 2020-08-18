@@ -3,12 +3,17 @@ import { withRouter, Link } from 'react-router-dom'
 import classes from './ItemDescription.module.css'
 import StoreMarker from '../../../../../../icons/findAStore.png';
 import axios from 'axios'
+import ProgressBar from '../../../../../UI/ProgressBar/ProgressBar'
+import progressBar from '../../../../../UI/ProgressBar/ProgressBar';
 
 class ItemDescription extends Component {
     state = {
         itemName: '',
         parentLinkPath: '',
-        sectionType: ''
+        sectionType: '',
+        showProgressbar: false,
+        bgcolor: "#6a1b9a",
+        completed: 60,
 
     };
     componentDidMount() {
@@ -22,7 +27,13 @@ class ItemDescription extends Component {
     orderConfirm = (e) => {
         e.preventDefault();
 
-        console.log("order placed");
+        if (!this.state.showProgressbar) {
+            this.setState({
+                showProgressbar: true
+            })
+        }
+
+        alert("Order placed successfully!")
 
         let formData = new FormData();
         formData.append('item', this.state.itemName);
@@ -39,9 +50,21 @@ class ItemDescription extends Component {
     }
 
 
+
+
     render() {
+
+        let progressbar = null;
+        if (this.state.showProgressbar) {
+            progressbar = <ProgressBar bgcolor={this.state.bgcolor} completed={this.state.completed} />
+
+        }
         return (
             <main className={classes.main}>
+                <div className={classes.pb}>
+                    {progressbar}
+
+                </div>
                 <div className={classes.productNameDivWRapper}>
                     <div className={classes.divContainer}>
                         <div className={classes.innerDivPositioning}>
