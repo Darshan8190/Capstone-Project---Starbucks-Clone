@@ -6,6 +6,7 @@
 .createUserWrapper {
   width: 100%;
   display: flex;
+  flex-direction: row;
   position: relative;
 }
 
@@ -317,7 +318,7 @@
   display: none;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px){
+@media only screen and (min-width: 769px) and (max-width: 1024px){
  
   .joinNowForm form {
     width: 60%;
@@ -326,4 +327,28 @@
    
   }
 
-  
+  @media only screen and (min-width: 426px) and (max-width: 768px) {
+    .createUserWrapper {
+      /* display: flex; */
+      flex-direction: column;
+      /* position: relative; */
+    }
+    .labelwrapper{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      top: 0%;
+      transform: translateY(0%);
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    }
+
+    
+.joinNowForm {
+  width: 100%;
+  position: relative;
+  right: 0;
+  top: 0;
+}
+  }

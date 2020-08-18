@@ -318,3 +318,30 @@ line-height: 2.1rem;
   width: 60%;
 }
   }
+
+  @media only screen and (min-width: 426px) and (max-width: 768px) {
+
+    .signinUserWrapper {
+      position: relative;
+    }
+    
+    /* section label */
+    .labelwrapper {
+      width: 100%;
+      position: relative;
+      top: 0%;
+      transform: translateY(0%);
+      padding: 4rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+
+    }
+
+    .signInFormWrapper {
+      width: 100%;
+      position: relative;
+      right: 0;
+      top: 0;
+      display: flex;
+
+    }
+  }

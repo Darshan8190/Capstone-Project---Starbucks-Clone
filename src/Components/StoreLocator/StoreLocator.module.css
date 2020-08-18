@@ -8,9 +8,6 @@
   display: flex;
   flex-direction: column;
   flex-basis: 40vw;
-  flex-grow: 0;
-  flex-shrink: 0;
-  /* height: 90vh !important; */
   position: relative;
   /* order: 1; */
   z-index: 1;
@@ -177,5 +174,23 @@ right: 0;
 
  .mapWrapper {
   height: 100% !important;
-  /* min-height: 78vh; */
 } 
+
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+
+  .mainWrapper {
+    flex-direction: column;
+    height: 100vh;
+  }
+  .storeLocatorWrapper {
+
+    flex-basis: 100vw;
+    /* min-height: 10vh !important; */
+    position: relative;
+    overflow: visible;
+    margin: 4rem;
+
+  }
+
+  
+}

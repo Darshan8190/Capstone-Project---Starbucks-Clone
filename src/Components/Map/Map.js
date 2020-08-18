@@ -16,7 +16,7 @@ class Map extends Component {
             <div className={classes.mapWrapper}>
                 <MyMapComponent
                     containerElement={
-                        <div style={{ height: '78vh', width: '100%' }} />
+                        <div className={classes.divWrapper} />
                     }
                     mapElement={<div style={{ height: '100%' }} />}
                     isMarkerShown

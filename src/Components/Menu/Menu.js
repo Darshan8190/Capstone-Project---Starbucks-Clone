@@ -10,9 +10,7 @@ class Menu extends Component {
     render() {
         return (
             <div className={classes.Container}>
-                <Switch>
-
-                </Switch>
+        
 
                 <div className={classes.Wrapper}>
                     <Redirect from="/" to="/menu" />

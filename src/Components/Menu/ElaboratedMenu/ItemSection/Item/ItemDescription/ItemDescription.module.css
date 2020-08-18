@@ -11,8 +11,7 @@
   bottom: 0;
   left: 0;
   overflow: auto;
-  width: 38.2vw;
-  z-index: 1;
+  width: 40vw;
   /* box-shadow: 0 1px 1px rgba(0, 0, 0, 0.24), 0 4px 4px rgba(0, 0, 0, 0.12); */
   padding-top: 0.8rem !important;
   background-color: #ffffff;
@@ -88,8 +87,9 @@
 }
 
 .productDescriptionDivWRapper {
-  margin-left: 30vw;
+  margin-left: 30.9vw;
   background-color: #eeeeee !important;
+  width: 60vw;
 }
 
 .productDescriptionDivContainer {
@@ -156,7 +156,7 @@
     padding: 0;
     text-align: left;
 }
-.Column{
+.image,.content{
     padding: 0 2.4rem;
     width: 50%;
     position: relative;
@@ -284,4 +284,47 @@
     background-color: #1f3933;
     border-radius: 50%;
     margin-right: 1.6rem!important;
+}
+
+
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+  
+.contentWrapper{
+  display: flex;
+  flex-direction: column;
+}
+
+.content{
+  width: 100%;
+}
+.main{
+  margin-left: -9.1rem;
+}
+
+.productNameDivWRapper{
+
+  position: relative;
+  top: 0rem;
+  display: block;
+  width: 100vw;
+  z-index: 1;
+  padding-top: 0.8rem !important;
+}
+.innerDivPositioning {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 2.4rem;
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+
+.productDescriptionDivWRapper{
+  width: 100vw;
+  margin-left: 0;
+  display: block;
+}
+.productDescriptionDivContainer{
+  padding: 6rem 8rem 8rem 8rem !important;
+
+}
 }

@@ -4,3 +4,21 @@
     min-height: 78vh;
     width: 60%;
 }
+
+.divWrapper{
+height: 78vh;
+width: 100%;
+}
+
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+    .mapWrapper{
+   
+        min-height: 78vh;
+        width: 100%;
+    }
+
+    .divWrapper{
+        min-height: 30vh;
+    }
+    
+}

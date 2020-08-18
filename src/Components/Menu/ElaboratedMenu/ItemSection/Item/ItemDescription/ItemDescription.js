@@ -85,7 +85,7 @@ class ItemDescription extends Component {
                             </div>
                         </div>
                         <div className={classes.contentWrapper}>
-                            <div className={classes.Column}>
+                            <div className={classes.image}>
                                 <div className={[classes.block, classes.relative, classes.imageBlock, classes.mt1, classes.ml1].join(" ")}>
                                     <div className={[classes.block, classes.fullWidth].join(" ")}></div>
                                     <div className={classes.absoluteSpread}>
@@ -96,7 +96,7 @@ class ItemDescription extends Component {
                                 </div>
 
                             </div>
-                            <div className={classes.Column}>
+                            <div className={classes.content}>
                                 <div>
                                     <div className={classes.py3}>
                                         <h2 className={[classes.heading, classes.headingMedium, classes.mb3].join(" ")}>Nutrition Information</h2>
