@@ -11,8 +11,6 @@ class Layout extends Component {
     menu: null
   };
 
-
-
   componentDidMount() {
     axios
       .get("https://starbucks-clone-capstone.firebaseio.com/menu.json")

@@ -21,15 +21,17 @@ class JoinNow extends Component {
         : event.target.value;
 
 
-          this.setState({
-            ...this.state,
-            [event.target.name]: value,
-          });
-       
+    this.setState({
+      ...this.state,
+      [event.target.name]: value,
+    });
+
 
   };
 
   handleSubmit = (event) => {
+    event.preventDefault();
+
     const userRegistrationInfo = {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
@@ -46,7 +48,6 @@ class JoinNow extends Component {
       )
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
-    event.preventDefault();
   }
 
   handleInputFocusIn = () => {
@@ -63,15 +64,15 @@ class JoinNow extends Component {
 
   render() {
 
-  
+
     return (
       <main className={classes.wrapper}>
         <div className={classes.createUserWrapper}>
           <section className={classes.labelwrapper}>
-          <div className={classes.headingWrapper}>
+            <div className={classes.headingWrapper}>
 
-            <p className={classes.createAnAccountLabel}>Create an account</p>
-          </div>
+              <p className={classes.createAnAccountLabel}>Create an account</p>
+            </div>
           </section>
 
           <section className={classes.joinNowForm}>
@@ -113,7 +114,7 @@ class JoinNow extends Component {
                 <h2 className={classes.accountSecuritySpan}>
                   Account Security
                 </h2>
-                
+
                 <div className={classes.boxEmail}>
                   <input
                     type="email"
@@ -123,7 +124,7 @@ class JoinNow extends Component {
                     value={this.state.emailid}
                     onChange={(event) => this.handleChange(event)}
                     onFocus={this.handleInputFocusIn}
-                    // onBlur={this.handleInputFocusOut}
+                  // onBlur={this.handleInputFocusOut}
                   />
                   <label htmlFor="email" className={classes.labelEmail}>
                     <span className={classes.contentEmail}>Email address</span>
@@ -132,7 +133,7 @@ class JoinNow extends Component {
                 {this.state.focus ? (
                   <p className={classes.Show}>This will be your username</p>
                 ) : null}
-       
+
                 {/* {display} */}
 
                 <div className={classes.boxEmail}>

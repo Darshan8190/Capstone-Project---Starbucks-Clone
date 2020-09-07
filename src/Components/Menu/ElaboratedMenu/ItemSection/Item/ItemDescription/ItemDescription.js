@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link, Redirect } from 'react-router-dom'
 import classes from './ItemDescription.module.css'
 import StoreMarker from '../../../../../../icons/findAStore.png';
 import axios from 'axios'
 import ProgressBar from '../../../../../UI/ProgressBar/ProgressBar'
-import progressBar from '../../../../../UI/ProgressBar/ProgressBar';
 
 class ItemDescription extends Component {
     state = {
@@ -14,7 +13,8 @@ class ItemDescription extends Component {
         showProgressbar: false,
         bgcolor: "#6a1b9a",
         completed: 60,
-
+        submitted: false,
+        orders: []
     };
     componentDidMount() {
         this.setState({
@@ -22,30 +22,59 @@ class ItemDescription extends Component {
             parentLinkPath: this.props.location.state.parentLinkPath,
             sectionType: this.props.location.state.sectionType
         })
+
+        // fetching orders from firebase
+        axios.get("https://starbucks-clone-capstone.firebaseio.com/orders.json")
+            .then(res => {
+                const fetchedOrders = [];
+                for (let key in res.data) {
+                    fetchedOrders.push({
+                        ...res.data[key],
+                        id: key
+                    },
+                    )
+                }
+                // this.setState({ orders: fetchedOrders })
+                console.log(fetchedOrders);
+            })
+            .catch(err => console.log(err))
     }
 
-    orderConfirm = (e) => {
-        e.preventDefault();
+    orderConfirm = (event) => {
+        event.preventDefault();
+
 
         if (!this.state.showProgressbar) {
             this.setState({
-                showProgressbar: true
+                showProgressbar: true,
+                submitted: true
             })
         }
 
         alert("Order placed successfully!")
 
-        let formData = new FormData();
-        formData.append('item', this.state.itemName);
 
-        const url = "http://localhost:80/reactbackend/index.php";
-        axios.post(url, formData, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        })
-            .then(res => console.log(res.data))
-            .catch(error => console.log(error));
+        const orderDetails = {
+            itemName: this.state.itemName
+        }
+
+        axios.post("https://starbucks-clone-capstone.firebaseio.com/orders.json", orderDetails)
+            .then(response => console.log(response.data))
+            .catch(error => console.log(error))
+
+        // using php myadmin for storing a order
+
+        // let formData = new FormData();
+        // formData.append('item', this.state.itemName);
+
+        // const url = "http://localhost:80/reactbackend/index.php";
+        // axios.post(url, formData, {
+        //     headers: {
+        //         'content-type': 'multipart/form-data'
+        //     }
+        // })
+        //     .then(res => console.log(res.data))
+        //     .catch(error => console.log(error));
 
     }
 
@@ -59,11 +88,16 @@ class ItemDescription extends Component {
             progressbar = <ProgressBar bgcolor={this.state.bgcolor} completed={this.state.completed} />
 
         }
+
+        let redirect = null;
+        if (this.state.submitted) {
+            redirect = <Redirect to="/menu" />;
+        }
         return (
             <main className={classes.main}>
                 <div className={classes.pb}>
                     {progressbar}
-
+                    {redirect}
                 </div>
                 <div className={classes.productNameDivWRapper}>
                     <div className={classes.divContainer}>
