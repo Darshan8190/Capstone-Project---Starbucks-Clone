@@ -179,10 +179,6 @@
   margin-bottom: 2.4rem;
 }
 
-.rewardsCheckbox {
-  display: flex;
-}
-
 .checkboxLabel {
   color: #212121;
   cursor: pointer;

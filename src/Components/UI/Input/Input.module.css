@@ -1,0 +1,147 @@
+.inputElementWrapper {
+  width: 100%;
+  height: 6rem;
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.inputElement {
+  width: 100%;
+  height: 100%;
+  padding-top: 2.5rem;
+  border: none;
+  outline: none;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  font-weight: 700;
+  background-color: #f7f7f7;
+}
+
+.inputElementLabel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 2px solid #acacac;
+}
+
+/* .inputElementLabel::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid #00653e;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+} */
+
+.inputElementPlaceholder {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  color: #888888;
+}
+
+.inputElement:focus + .inputElementLabel .inputElementPlaceholder {
+  transform: translateY(-130%);
+  /* color: #00653e; */
+}
+
+.placeHolderAnimation {
+  transform: translateY(-130%);
+  /* color: #00653e; */
+}
+
+.elementLabelAnimation {
+  animation: linemoving 1s ease-out infinite;
+}
+
+@keyframes linemoving {
+  0% {
+    border-bottom: 2px solid #00a862;
+  }
+  100% {
+    border-bottom: 2px solid #00a862;
+  }
+}
+
+.DANGERelementLabelAnimation {
+  animation: danger 1s ease-out infinite;
+}
+
+@keyframes danger {
+  0% {
+    border-bottom: 2px solid #eb1919;
+  }
+  100% {
+    border-bottom: 2px solid #eb1919;
+  }
+}
+
+/* checkbox */
+.handleCheckbox {
+  display: flex;
+  padding: 2rem 0;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1.5px solid #00a862;
+  background: #f7f7f7;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: "\2713\0020";
+  position: absolute;
+  top: 0.8rem;
+  left: 0.45rem;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  line-height: 0.8rem;
+  color: #00653e;
+  transition: all 0.2s;
+  font-family: "Lucida Sans Unicode", "Arial Unicode MS", Arial;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.checkboxSubscribeLabel {
+  padding: 0 0.5rem;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+}
+
+.checkboxDetailsLink {
+  float: left;
+  display: block;
+  color: #00653e;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+  text-decoration: underline;
+}
