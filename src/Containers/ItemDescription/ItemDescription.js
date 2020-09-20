@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import classes from './ItemDescription.module.css'
-import StoreMarker from '../../../../../../icons/findAStore.png';
+import StoreMarker from '../../icons/findAStore.png';
 import axios from 'axios'
-import ProgressBar from '../../../../../UI/ProgressBar/ProgressBar'
+import ProgressBar from '../../Components/UI/ProgressBar/ProgressBar'
 
 class ItemDescription extends Component {
     state = {
@@ -43,7 +43,6 @@ class ItemDescription extends Component {
     orderConfirm = (event) => {
         event.preventDefault();
 
-
         if (!this.state.showProgressbar) {
             this.setState({
                 showProgressbar: true,
@@ -53,13 +52,15 @@ class ItemDescription extends Component {
 
         alert("Order placed successfully!")
 
-
         const orderDetails = {
             itemName: this.state.itemName
         }
 
         axios.post("https://starbucks-clone-capstone.firebaseio.com/orders.json", orderDetails)
-            .then(response => console.log(response.data))
+            .then(response => {
+                console.log(response.data);
+                this.props.history.push('/menu')
+            })
             .catch(error => console.log(error))
 
         // using php myadmin for storing a order
@@ -77,27 +78,17 @@ class ItemDescription extends Component {
         //     .catch(error => console.log(error));
 
     }
-
-
-
-
     render() {
 
         let progressbar = null;
         if (this.state.showProgressbar) {
             progressbar = <ProgressBar bgcolor={this.state.bgcolor} completed={this.state.completed} />
-
         }
 
-        let redirect = null;
-        if (this.state.submitted) {
-            redirect = <Redirect to="/menu" />;
-        }
         return (
             <main className={classes.main}>
                 <div className={classes.pb}>
-                    {progressbar}
-                    {redirect}
+                    {/* {progressbar} */}
                 </div>
                 <div className={classes.productNameDivWRapper}>
                     <div className={classes.divContainer}>
@@ -133,10 +124,7 @@ class ItemDescription extends Component {
                             <div className={classes.buttonContainer}>
                                 <span className={classes.buttonSpan}>
                                     <div className={classes.buttonVisible}>
-
                                         <button type="submit" className={classes.mainButton} onClick={(event) => this.orderConfirm(event)}>Add to Order</button>
-
-
                                     </div>
                                 </span>
                             </div>
@@ -275,7 +263,6 @@ class ItemDescription extends Component {
                                             We cannot guarantee that any unpackaged products served in our stores are allergen-free because we use shared equipment to store, prepare, and serve them. Customers with allergies can find ingredient information for products on the labels of our packaged products or by calling Starbucks Customer Contact Center at 800-STARBUC (800-782-7282).
                                 </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

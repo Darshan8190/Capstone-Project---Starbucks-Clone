@@ -5,7 +5,7 @@ import Logo from '../Logo/Logo'
 import NavigationItems from './NavigationItems/NavigationItems'
 import StoreMarker from '../../icons/findAStore.png'
 import JoinNow from '../../Containers/JoinNow/JoinNow'
-import SignIn from '../SignIn/SignIn'
+import SignIn from '../../Containers/SignIn/SignIn'
 import StoreLocator from '../StoreLocator/StoreLocator'
 
 

@@ -3,8 +3,7 @@ import classes from './Menu.module.css';
 import ElaboratedMenu from './ElaboratedMenu/ElaboratedMenu'
 import MenuNavigation from '../Menu/MenuNavigation/MenuNavigation'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import ItemDescription from '../Menu/ElaboratedMenu/ItemSection/Item/ItemDescription/ItemDescription'
-
+import ItemDescription from '../../Containers/ItemDescription/ItemDescription'
 
 class Menu extends Component {
     render() {
