@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import classes from "./JoinNow.module.css";
-import SignInJoinNowFooter from "../SignInJoinNowFooter/SignInJoinNowFooter";
+import SignInJoinNowFooter from "../../../Components/SignInJoinNowFooter/SignInJoinNowFooter";
 import axios from "axios";
-import Input from '../UI/Input/Input'
+import Input from '../../../Components/UI/Input/Input'
 
 class JoinNow extends Component {
   state = {

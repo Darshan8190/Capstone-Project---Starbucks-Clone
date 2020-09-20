@@ -10,8 +10,6 @@ class Menu extends Component {
     render() {
         return (
             <div className={classes.Container}>
-        
-
                 <div className={classes.Wrapper}>
                     {/* <Redirect from="/" to="/menu" /> */}
                     <Switch>
@@ -36,7 +34,6 @@ class Menu extends Component {
 
                         <Route path="/menu" render={(props) => <MenuNavigation {...props} menu={this.props.menu["sectionNames"]} />} />
                     </Switch>
-
 
                     <Route path="/menu" exact render={(props) => <ElaboratedMenu {...props} menu={this.props.menu["sectionNames"]} />} />
 

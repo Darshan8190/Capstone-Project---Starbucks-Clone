@@ -1,4 +1,4 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import Aux from "../../Auxiliary/Auxiliary";
 import Navigation from "../../Components/Navigation/Navigation";
 import Menu from "../../Components/Menu/Menu";
@@ -8,7 +8,8 @@ import Spinner from '../../Components/UI/Spinner/Spinner'
 class Layout extends Component {
 
   state = {
-    menu: null
+    menu: null,
+    error: false
   };
 
   componentDidMount() {
@@ -19,18 +20,18 @@ class Layout extends Component {
           menu: response.data,
         });
       })
-      .catch((error) => console.log(error));
+      .catch(error => {
+        this.setState({
+          error: true
+        })
+      });
   }
 
   render() {
 
-    let menu = null;
-
-    
+    let menu = this.state.error ? <p>Can't fetch menu because of network error!</p> : <Spinner />
     if (this.state.menu) {
       menu = <Menu menu={this.state.menu} showMenuNavigation={this.state.showMenuNavigation} />
-    } else {
-      menu = <Spinner />
     }
 
     return (
