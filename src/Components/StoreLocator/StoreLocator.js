@@ -3,8 +3,6 @@ import classes from './StoreLocator.module.css'
 import Map from '../Map/Map'
 
 const storeLocator = (props) => (
-
-
     <main>
         <div className={classes.mainWrapper}>
 
