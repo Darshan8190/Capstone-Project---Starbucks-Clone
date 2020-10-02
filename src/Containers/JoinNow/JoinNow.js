@@ -398,7 +398,6 @@ class JoinNow extends Component {
                 <button type="submit" className={classes.submitButton}>Create account</button>
               </div>
             </form>
-
             <SignInJoinNowFooter />
           </section>
         </div>
