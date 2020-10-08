@@ -2,9 +2,9 @@ import * as actionTypes from './actionTypes'
 import axios from 'axios'
 
 // synchronous action creator
-export const setMenu = (menu) => {
+export const fetchMenuSuccess = (menu) => {
     return {
-        type: actionTypes.SET_MENU,
+        type: actionTypes.SET_MENU_SUCCESS,
         menu: menu
     }
 }
@@ -21,7 +21,7 @@ export const initMenu = () => {
         axios
             .get("https://starbucks-clone-capstone.firebaseio.com/menu.json")
             .then((response) => {
-                dispatch(setMenu(response.data))
+                dispatch(fetchMenuSuccess(response.data))
             })
             .catch(error => {
                 dispatch(fetchMenuFailed())

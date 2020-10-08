@@ -7,7 +7,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.SET_MENU:
+        case actionTypes.SET_MENU_SUCCESS:
             return {
                 ...state,
                 menu: action.menu,

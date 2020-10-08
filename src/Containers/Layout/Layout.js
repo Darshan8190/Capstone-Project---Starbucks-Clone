@@ -4,7 +4,7 @@ import Navigation from "../../Components/Navigation/Navigation";
 import Menu from "../../Components/Menu/Menu";
 import Spinner from '../../Components/UI/Spinner/Spinner'
 import { connect } from 'react-redux';
-import * as fetchingMenuActions from '../../store/actions/fetchingMenu'
+import * as actions from '../../store/actions/index'
 
 class Layout extends Component {
 
@@ -30,14 +30,14 @@ class Layout extends Component {
 
 const mapStateToProps = state => {
   return {
-    menu: state.menu,
-    error: state.error
+    menu: state.layout.menu,
+    error: state.layout.error
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitMenu: () => dispatch(fetchingMenuActions.initMenu())
+    onInitMenu: () => dispatch(actions.initMenu())
   }
 }
 
