@@ -1,0 +1,22 @@
+.boxWrapper{
+    width: 500px;
+    height: 100%;
+    margin: 10px auto;
+}
+
+.div{
+    background-color: rgb(211, 211, 211);
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px 0;
+    display: flex;
+}
+
+.textBold{
+    font-weight: 600;
+}
+
+.itemCounter{
+    font-weight: 600;
+    padding-right: 20px;
+}

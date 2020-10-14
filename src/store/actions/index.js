@@ -1,3 +1,3 @@
 export { initMenu } from './Layout'
 
-export { loginAuth } from './SignIn'
+export { loginAuth, logout } from './SignIn'

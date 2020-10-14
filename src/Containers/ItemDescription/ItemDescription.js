@@ -23,21 +23,7 @@ class ItemDescription extends Component {
             sectionType: this.props.location.state.sectionType
         })
 
-        // fetching orders from firebase
-        axios.get("https://starbucks-clone-capstone.firebaseio.com/orders.json")
-            .then(res => {
-                const fetchedOrders = [];
-                for (let key in res.data) {
-                    fetchedOrders.push({
-                        ...res.data[key],
-                        id: key
-                    },
-                    )
-                }
-                // this.setState({ orders: fetchedOrders })
-                console.log(fetchedOrders);
-            })
-            .catch(err => console.log(err))
+       
     }
 
     orderConfirm = (event) => {
@@ -58,7 +44,6 @@ class ItemDescription extends Component {
 
         axios.post("https://starbucks-clone-capstone.firebaseio.com/orders.json", orderDetails)
             .then(response => {
-                console.log(response.data);
                 this.props.history.push('/menu')
             })
             .catch(error => console.log(error))

@@ -14,6 +14,9 @@ const navigationItems = (props) => (
             <li className={classes.listItem}>
                 <NavLink to="/gift-cards" activeClassName={classes.active}>GIFT CARDS</NavLink>
             </li>
+            <li className={classes.listItem}>
+                <NavLink to="/view-orders" activeClassName={classes.active}>VIEW ORDERS</NavLink>
+            </li>
         </ul>
     </div>
 )
