@@ -16,17 +16,18 @@ class Navigation extends Component {
   render() {
 
     let isAuthenticated = null
-    if (!this.props.isAuth) {
+
+    if ((!this.props.isAuthSignIn && this.props.isAuthSignUp) || (this.props.isAuthSignIn && !this.props.isAuthSignUp)) {
+      isAuthenticated = <Link to="/logout" className={classes.joinNowLink}>Logout</Link>
+
+    }
+    else {
       isAuthenticated = (
         <span>
           <Link to="/account/signin" className={classes.signInLink}>Sign in</Link>
           <Link to="/account/create" className={classes.joinNowLink}>Join now</Link>
         </span>
       )
-    }
-    else {
-      isAuthenticated = <Link to="/logout" className={classes.joinNowLink}>Logout</Link>
-
     }
     return (
       <div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
 
@@ -57,16 +57,15 @@ class SignIn extends Component {
         loginFormIsValid: false
     }
 
-
     loginFormHandler = (event) => {
         event.preventDefault();
 
-        const loginInfo = {}        
+        const loginInfo = {}
         for (let formElement in this.state.loginForm) {
             loginInfo[formElement] = this.state.loginForm[formElement].value
         }
-        
-        this.props.onLoginAuth(loginInfo.username,loginInfo.password,loginInfo.keepLogedin)
+
+        this.props.onLoginAuth(loginInfo.username, loginInfo.password, loginInfo.keepLogedin)
         // if (this.state.loginFormIsValid) {
         //     axios.post("https://starbucks-clone-capstone.firebaseio.com/Login-Info.json", loginInfo)
         //         .then(response => this.props.history.push('/menu'))
@@ -137,7 +136,7 @@ class SignIn extends Component {
             ))
         )
 
-        return (
+        let signInPage = !this.props.hasToken ? (
             <main className={classes.signinUserWrapper}>
                 <section className={classes.labelwrapper}>
                     <div className={classes.headingWrapper}>
@@ -166,13 +165,17 @@ class SignIn extends Component {
                     <SignInJoinNowFooter />
                 </section>
             </main>
+        ) : <Redirect to="/menu" />
+
+        return (
+            signInPage
         );
     }
 };
 
 const mapStateToProps = state => {
     return {
-
+        hasToken: state.signin.token
     }
 }
 
@@ -182,4 +185,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

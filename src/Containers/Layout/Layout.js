@@ -21,7 +21,7 @@ class Layout extends Component {
 
     return (
       <Aux>
-        <Navigation isAuth={this.props.isAuthenticated}/>
+        <Navigation isAuthSignIn={this.props.isAuthenticatedSignIn} isAuthSignUp={this.props.isAuthenticatedSignUp}/>
         {menu}
       </Aux>
     );
@@ -32,7 +32,8 @@ const mapStateToProps = state => {
   return {
     menu: state.layout.menu,
     error: state.layout.error,
-    isAuthenticated : state.signIn.token != null
+    isAuthenticatedSignIn: state.signin.token != null,
+    isAuthenticatedSignUp: state.signup.token != null
   }
 }
 

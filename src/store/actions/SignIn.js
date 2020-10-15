@@ -24,7 +24,7 @@ export const loginAuthFailed = (error) => {
     }
 }
 
-export const logout = () => {
+export const logoutFromSignIn = () => {
     return {
         type: actionTypes.LOGIN_AUTH_LOGOUT
     }
@@ -33,7 +33,7 @@ export const logout = () => {
 export const checkSignInTimeout = (expirationTime) => {
     return dispatch => {
         setTimeout(() => {
-            dispatch(logout())
+            dispatch(logoutFromSignIn())
         }, expirationTime * 1000)
     }
 }

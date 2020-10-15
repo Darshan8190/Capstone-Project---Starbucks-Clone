@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import * as actions from '../../store/actions/index'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+
 import classes from "./JoinNow.module.css";
 import SignInJoinNowFooter from "../../Components/SignInJoinNowFooter/SignInJoinNowFooter";
 import axios from "axios";
@@ -56,7 +60,8 @@ class JoinNow extends Component {
         value: '',
         placeholder: 'Password',
         validation: {
-          required: true
+          required: true,
+          minLength: 6
         },
         valid: false,
         touched: false
@@ -72,7 +77,7 @@ class JoinNow extends Component {
         value: false,
         placeholder: "Yes, I'd like to receive news, promotions, information and offers from Starbucks.",
         validation: {
-          required : false
+          required: false
         },
         valid: true,
         touched: false
@@ -159,10 +164,13 @@ class JoinNow extends Component {
     })
 
     if (loginFormIsValid) {
-      axios.post("https://starbucks-clone-capstone.firebaseio.com/User_Registration_Info.json",
-        userRegistrationInfo)
-        .then(response => this.props.history.push('/menu'))
-        .catch(error => console.log(error));
+
+      this.props.onSignupAuth(this.state.accountSecurity.emailAddress.value, this.state.accountSecurity.password.value)
+
+      // axios.post("https://starbucks-clone-capstone.firebaseio.com/User_Registration_Info.json",
+      //   userRegistrationInfo)
+      //   .then(response => this.props.history.push('/menu'))
+      //   .catch(error => console.log(error));
     }
     else {
       alert("form is invalid")
@@ -179,6 +187,10 @@ class JoinNow extends Component {
       else {
         isValid = value.trim() !== '' && isValid
       }
+    }
+
+    if (rules.minLength) {
+      isValid = value.length >= rules.minLength && isValid
     }
     return isValid;
   }
@@ -379,31 +391,48 @@ class JoinNow extends Component {
       </div>
 
     )
-    return (
-      <main className={classes.wrapper}>
-        <div className={classes.createUserWrapper}>
-          <section className={classes.labelwrapper}>
-            <div className={classes.headingWrapper}>
-              <p className={classes.createAnAccountLabel}>Create an account</p>
-            </div>
-          </section>
 
-          <section className={classes.joinNowForm}>
-            <form onSubmit={this.loginFormHandler}>
-              {personalInfoFieldset}
-              {accountSummaryFieldset}
-              {promotionsSection}
-              {termsofuseSection}
-              <div className={classes.submitButtonWrapper}>
-                <button type="submit" className={classes.submitButton}>Create account</button>
+    let joinNowPage = !this.props.hasToken
+      ? (
+        <main className={classes.wrapper}>
+          <div className={classes.createUserWrapper}>
+            <section className={classes.labelwrapper}>
+              <div className={classes.headingWrapper}>
+                <p className={classes.createAnAccountLabel}>Create an account</p>
               </div>
-            </form>
-            <SignInJoinNowFooter />
-          </section>
-        </div>
-      </main>
+            </section>
+            <section className={classes.joinNowForm}>
+              <form onSubmit={this.loginFormHandler}>
+                {personalInfoFieldset}
+                {accountSummaryFieldset}
+                {promotionsSection}
+                {termsofuseSection}
+                <div className={classes.submitButtonWrapper}>
+                  <button type="submit" className={classes.submitButton}>Create account</button>
+                </div>
+              </form>
+              <SignInJoinNowFooter />
+            </section>
+          </div>
+        </main>
+      )
+      : <Redirect to="/menu" />
+    return (
+      joinNowPage
     );
   }
 }
 
-export default JoinNow;
+const mapStateToProps = state => {
+  return {
+    hasToken: state.signup.token
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSignupAuth: (email, password) => dispatch(actions.signupAuth(email, password))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(JoinNow);

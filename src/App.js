@@ -7,12 +7,14 @@ import thunk from 'redux-thunk'
 import Layout from './Containers/Layout/Layout';
 import layoutReducer from './store/reducers/Layout'
 import signInReducer from './store/reducers/SignIn'
+import joinNowReducer from './store/reducers/JoinNow'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   layout: layoutReducer,
-  signIn: signInReducer
+  signin: signInReducer,
+  signup : joinNowReducer
 })
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
