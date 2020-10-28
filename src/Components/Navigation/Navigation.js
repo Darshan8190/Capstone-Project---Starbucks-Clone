@@ -4,7 +4,7 @@ import { Link, Route } from 'react-router-dom'
 import classes from "./Navigation.module.css";
 import Logo from '../Logo/Logo'
 import NavigationItems from './NavigationItems/NavigationItems'
-import ViewOrders from '../ViewOrders/ViewOrders'
+import ViewOrders from '../FetchOrders/FetchOrders'
 import StoreMarker from '../../icons/findAStore.png'
 import StoreLocator from '../StoreLocator/StoreLocator'
 import SignIn from '../../Containers/SignIn/SignIn'
@@ -17,6 +17,8 @@ class Navigation extends Component {
 
     let isAuthenticated = null
 
+    console.log(this.props.isAuthSignIn);
+    console.log(this.props.isAuthSignUp);
     if ((!this.props.isAuthSignIn && this.props.isAuthSignUp) || (this.props.isAuthSignIn && !this.props.isAuthSignUp)) {
       isAuthenticated = <Link to="/logout" className={classes.joinNowLink}>Logout</Link>
 

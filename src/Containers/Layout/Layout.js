@@ -10,6 +10,7 @@ class Layout extends Component {
 
   componentDidMount() {
     this.props.onInitMenu()
+    this.props.onAutoSignIn()
   }
 
   render() {
@@ -39,8 +40,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onInitMenu: () => dispatch(actions.initMenu())
+    onInitMenu: () => dispatch(actions.initMenu()),
+    onAutoSignIn : () => dispatch(actions.authCheckStatus())
+    
   }
 }
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Layout);
