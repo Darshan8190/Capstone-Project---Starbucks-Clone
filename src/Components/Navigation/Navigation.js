@@ -1,39 +1,63 @@
-import React from "react";
-import classes from "./Navigation.module.css";
+import React, { Component } from "react";
 import { Link, Route } from 'react-router-dom'
+
+import classes from "./Navigation.module.css";
 import Logo from '../Logo/Logo'
 import NavigationItems from './NavigationItems/NavigationItems'
+import ViewOrders from '../FetchOrders/FetchOrders'
 import StoreMarker from '../../icons/findAStore.png'
-import JoinNow from '../../Containers/JoinNow/JoinNow'
-import SignIn from '../../Containers/SignIn/SignIn'
 import StoreLocator from '../StoreLocator/StoreLocator'
+import SignIn from '../../Containers/SignIn/SignIn'
+import JoinNow from '../../Containers/JoinNow/JoinNow'
+import Logout from '../Logout/Logout'
 
 
-const navigation = (props) => (
-  <div>
-    <header>
-      <nav className={classes.Navigation}>
-        <div className={classes.handle}>
-          <Logo />
-          <NavigationItems />
-          <div className={classes.signInSignUpPageWrapper}>
-            <div className={classes.signInSignUpPage}>
-              <Link to="/store-locator" className={classes.findAStoreLink}>
-                <img src={StoreMarker} alt="Store Marker" className={classes.locationMarker} />
+class Navigation extends Component {
+  render() {
+
+    let isAuthenticated = null
+
+    console.log(this.props.isAuthSignIn);
+    console.log(this.props.isAuthSignUp);
+    if ((!this.props.isAuthSignIn && this.props.isAuthSignUp) || (this.props.isAuthSignIn && !this.props.isAuthSignUp)) {
+      isAuthenticated = <Link to="/logout" className={classes.joinNowLink}>Logout</Link>
+
+    }
+    else {
+      isAuthenticated = (
+        <span>
+          <Link to="/account/signin" className={classes.signInLink}>Sign in</Link>
+          <Link to="/account/create" className={classes.joinNowLink}>Join now</Link>
+        </span>
+      )
+    }
+    return (
+      <div>
+        <header>
+          <nav className={classes.Navigation}>
+            <div className={classes.handle}>
+              <Logo />
+              <NavigationItems />
+              <div className={classes.signInSignUpPageWrapper}>
+                <div className={classes.signInSignUpPage}>
+                  <Link to="/store-locator" className={classes.findAStoreLink}>
+                    <img src={StoreMarker} alt="Store Marker" className={classes.locationMarker} />
                   Find a store</Link>
-              <Link to="/account/signin" className={classes.signInLink}>Sign in</Link>
-              <Link to="/account/create" className={classes.joinNowLink}>Join now</Link>
+                  {isAuthenticated}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </nav>
-    </header>
+          </nav>
+        </header>
 
-    <Route path="/account/signin" exact component={SignIn} />
-    <Route path="/account/create" exact component={JoinNow} />
-    <Route path="/store-locator" exaxt component={StoreLocator}/>
-  </div>
+        <Route path="/view-orders" exact component={ViewOrders} />
+        <Route path="/store-locator" exaxt component={StoreLocator} />
+        <Route path="/account/signin" exact component={SignIn} />
+        <Route path="/account/create" exact component={JoinNow} />
+        <Route path="/logout" exact component={Logout} />
+      </div>
+    )
+  }
+}
 
-);
-
-export default navigation;
+export default Navigation;

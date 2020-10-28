@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom'
+import axios from 'axios'
+import { connect } from 'react-redux'
+
 import classes from './SignIn.module.css'
 import SignInJoinNowFooter from '../../Components/SignInJoinNowFooter/SignInJoinNowFooter'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
 import Input from '../../Components/UI/Input/Input'
+import * as actions from '../../store/actions/index'
 
 
 class SignIn extends Component {
@@ -13,12 +16,13 @@ class SignIn extends Component {
             username: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'text'
+                    type: 'email'
                 },
                 value: '',
                 placeholder: 'Username or E-mail Address',
                 validation: {
-                    required: true
+                    required: true,
+                    isEmail: true
                 },
                 valid: false,
                 touched: false
@@ -31,7 +35,8 @@ class SignIn extends Component {
                 value: '',
                 placeholder: 'Password',
                 validation: {
-                    required: true
+                    required: true,
+                    minLength: 6
                 },
                 valid: false,
                 touched: false
@@ -40,35 +45,35 @@ class SignIn extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'checkbox',
+                    id: 'keeplogin'
                 },
-                value: true,
+                value: false,
                 placeholder: 'Keep me signed in.',
                 validation: {},
-                valid: true,
-                touched: true
+                valid: false,
+                touched: false
             }
         },
         loginFormIsValid: false
     }
 
-    
     loginFormHandler = (event) => {
         event.preventDefault();
 
         const loginInfo = {}
-
         for (let formElement in this.state.loginForm) {
             loginInfo[formElement] = this.state.loginForm[formElement].value
         }
 
-        if (this.state.loginFormIsValid) {
-            axios.post("https://starbucks-clone-capstone.firebaseio.com/Login-Info.json", loginInfo)
-                .then(response => this.props.history.push('/menu'))
-                .catch(error => console.log(error));
-        }
-        else {
-            alert("form is invalid")
-        }
+        this.props.onLoginAuth(loginInfo.username, loginInfo.password, loginInfo.keepLogedin)
+        // if (this.state.loginFormIsValid) {
+        //     axios.post("https://starbucks-clone-capstone.firebaseio.com/Login-Info.json", loginInfo)
+        //         .then(response => this.props.history.push('/menu'))
+        //         .catch(error => console.log(error));
+        // }
+        // else {
+        //     alert("form is invalid")
+        // }
     }
 
     checkValiity(value, rules) {
@@ -77,6 +82,11 @@ class SignIn extends Component {
         if (rules.required) {
             isValid = value.trim() !== '' && isValid
         }
+
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid
+        }
+
         return isValid;
     }
 
@@ -85,6 +95,7 @@ class SignIn extends Component {
         const updatedFormElement = { ...updatedLoginForm[inputIdentifier] }
 
         updatedFormElement.value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
+
         updatedFormElement.valid = this.checkValiity(updatedFormElement.value, updatedFormElement.validation)
         updatedFormElement.touched = true
         updatedLoginForm[inputIdentifier] = updatedFormElement;
@@ -108,40 +119,39 @@ class SignIn extends Component {
                 config: this.state.loginForm[key]
             })
         }
+
         let form = (
-            <form onSubmit={this.loginFormHandler}>
-                {loginFormArray.map(formElement => (
-                    <Input
-                        key={formElement.id}
-                        elementType={formElement.config.elementConfig.type}
-                        elementConfig={formElement.config.elementConfig}
-                        value={formElement.config.value}
-                        placeholder={formElement.config.placeholder}
-                        invalid={!formElement.config.valid}
-                        shouldValidate={formElement.config.validation}
-                        touched={formElement.config.touched}
-                        changed={(event) => this.inputChangedhandler(event, formElement.id)}
-                    />
-                ))}
-                <div className={classes.userHelpingLinks}>
-                    <Link to="/" className={classes.forgotUsernamePassword}>Forgot your username?</Link>
-                    <Link to="/" className={classes.forgotUsernamePassword}>Forgot your password?</Link>
-                </div>
-                <button type="submit" className={classes.signinButton}>Sign In</button>
-            </form>
+            loginFormArray.map(formElement => (
+                <Input
+                    key={formElement.id}
+                    elementType={formElement.config.elementConfig.type}
+                    elementConfig={formElement.config.elementConfig}
+                    value={formElement.config.value}
+                    placeholder={formElement.config.placeholder}
+                    invalid={!formElement.config.valid}
+                    shouldValidate={formElement.config.validation}
+                    touched={formElement.config.touched}
+                    changed={(event) => this.inputChangedhandler(event, formElement.id)}
+                />
+            ))
         )
 
-        return (
+        let signInPage = !this.props.hasToken ? (
             <main className={classes.signinUserWrapper}>
-
                 <section className={classes.labelwrapper}>
                     <div className={classes.headingWrapper}>
                         <h1 className={classes.createAnAccountLabel}>Sign in or create an account</h1>
                     </div>
                 </section>
-
                 <section className={classes.signInFormWrapper}>
-                    {form}
+                    <form onSubmit={this.loginFormHandler}>
+                        {form}
+                        <div className={classes.userHelpingLinks}>
+                            <Link to="/" className={classes.forgotUsernamePassword}>Forgot your username?</Link>
+                            <Link to="/" className={classes.forgotUsernamePassword}>Forgot your password?</Link>
+                        </div>
+                        <button type="submit" className={classes.signinButton}>Sign In</button>
+                    </form>
 
                     <h2 className={classes.joinRewardsLabel}>Join Starbucks Rewards</h2>
 
@@ -152,12 +162,27 @@ class SignIn extends Component {
                             <p className={classes.joinNowParagraph}>Join Starbucks Rewards to earn free food and drinks, get free refills, pay and order with your phone, and more.</p>
                         </div>
                     </section>
-
                     <SignInJoinNowFooter />
                 </section>
             </main>
+        ) : <Redirect to="/menu" />
+
+        return (
+            signInPage
         );
     }
 };
 
-export default SignIn;
+const mapStateToProps = state => {
+    return {
+        hasToken: state.signin.token
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onLoginAuth: (email, password, keepLogin) => dispatch(actions.loginAuth(email, password, keepLogin))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

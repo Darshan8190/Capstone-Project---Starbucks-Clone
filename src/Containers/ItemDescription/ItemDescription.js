@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 import classes from './ItemDescription.module.css'
 import StoreMarker from '../../icons/findAStore.png';
 import axios from 'axios'
@@ -23,21 +25,7 @@ class ItemDescription extends Component {
             sectionType: this.props.location.state.sectionType
         })
 
-        // fetching orders from firebase
-        axios.get("https://starbucks-clone-capstone.firebaseio.com/orders.json")
-            .then(res => {
-                const fetchedOrders = [];
-                for (let key in res.data) {
-                    fetchedOrders.push({
-                        ...res.data[key],
-                        id: key
-                    },
-                    )
-                }
-                // this.setState({ orders: fetchedOrders })
-                console.log(fetchedOrders);
-            })
-            .catch(err => console.log(err))
+
     }
 
     orderConfirm = (event) => {
@@ -50,18 +38,24 @@ class ItemDescription extends Component {
             })
         }
 
-        alert("Order placed successfully!")
+        if (this.props.isAuthenticated) {
 
-        const orderDetails = {
-            itemName: this.state.itemName
+            const orderDetails = {
+                itemName: this.state.itemName
+            }
+
+            axios.post("https://starbucks-clone-capstone.firebaseio.com/orders.json", orderDetails)
+                .then(response => {
+                    this.props.history.push('/menu')
+                })
+                .catch(error => console.log(error))
+
+                alert("Order placed successfully!")
         }
-
-        axios.post("https://starbucks-clone-capstone.firebaseio.com/orders.json", orderDetails)
-            .then(response => {
-                console.log(response.data);
-                this.props.history.push('/menu')
-            })
-            .catch(error => console.log(error))
+        else {
+            alert("Please Signin or Signup to place an order !")
+            this.props.history.push('/account/signin')
+        }
 
         // using php myadmin for storing a order
 
@@ -90,6 +84,7 @@ class ItemDescription extends Component {
                 <div className={classes.pb}>
                     {/* {progressbar} */}
                 </div>
+
                 <div className={classes.productNameDivWRapper}>
                     <div className={classes.divContainer}>
                         <div className={classes.innerDivPositioning}>
@@ -273,5 +268,13 @@ class ItemDescription extends Component {
     }
 }
 
-export default withRouter(ItemDescription);
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.signin.token != null || state.signup.token != null
+    }
+}
+
+
+
+export default connect(mapStateToProps)(withRouter(ItemDescription));
 

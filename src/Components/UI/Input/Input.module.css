@@ -99,7 +99,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 1.5rem;
+  width: 1.5rem !important;
   height: 1.5rem;
   border: 1.5px solid #00a862;
   background: #f7f7f7;
@@ -112,7 +112,7 @@
 [type="checkbox"]:checked + label:after {
   content: "\2713\0020";
   position: absolute;
-  top: 0.8rem;
+  top: 0.8rem !important;
   left: 0.45rem;
   font-size: 1.2rem;
   font-weight: bolder;
